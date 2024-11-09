@@ -3,8 +3,8 @@ import { Button } from "../ui/button";
 export default function Footer() {
   return (
     <footer className="bg-secondary h-full w-full">
-      <div className="mx-20 space-y-14 p-20 rounded-b-[150px] bg-primary text-center">
-        <span className="text-8xl  mx-auto font-bold">DISCUTONS<br/> ENSEMBLE DE<br/> VOS PROJETS</span>
+      <div className="mx-14 space-y-14 p-20 rounded-b-[150px] bg-primary text-center">
+        <span className="text-7xl  mx-auto font-bold">DISCUTONS<br/> ENSEMBLE DE<br/> VOS PROJETS</span>
         <div className="flex justify-center gap-6">
           <Button>Prendre rdv</Button>
           <Button>Contact</Button>

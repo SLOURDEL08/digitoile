@@ -10,7 +10,7 @@ export function Hero({
   return (
     <section 
       className={cn(
-        'w-full relative bg-primary',
+        'w-full min-h-[60vh] relative bg-primary',
         className
       )}
     >

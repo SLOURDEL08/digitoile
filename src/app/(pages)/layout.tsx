@@ -9,7 +9,7 @@ export default function PagesLayout({
   return (
     <div className="flex min-h-screen flex-col bg-secondary">
       <Navigation />
-      <main className="flex-1 px-10">
+      <main className="flex-1">
         {children}
       </main>
       <Footer />

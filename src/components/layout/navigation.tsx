@@ -7,16 +7,16 @@ import { IconArrow } from '../ui/icons';
 
 const navigationItems = [
   { name: 'Home', href: '/' },
-  { name: 'Développement', href: '/services' },
-  { name: 'Design', href: '/about' },
-  { name: 'Réalisations', href: '/realisations' },
+  { name: 'Développement', href: '/developpement' },
+  { name: 'Design', href: '/design' },
+  { name: 'Projets', href: '/projets' },
 ] as const;
 
 export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-primary backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full bg-primary">
       <div className="py-4 px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
