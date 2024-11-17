@@ -1,6 +1,5 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { customFont } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${customFont.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body className={` font-CD-light font-light font-sans antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
