@@ -5,6 +5,14 @@ import Image from "next/image";
 import { useState } from "react";
 import Typography from "../ui/typography";
 
+interface Technology {
+  icon: string;  // Change type to string since it's a path
+  label: string;
+  isImage: boolean;
+  description: string;
+  category: string;
+}
+
 const technologies = [
   { 
     icon: '/images/figma.png',
@@ -51,11 +59,10 @@ const technologies = [
 ];
 
 export default function UseTechno() {
-  const [activeTech, setActiveTech] = useState(technologies[0]);
+  const [activeTech, setActiveTech] = useState<Technology>(technologies[0]);
 
   return (
     <section className="">
-      
       <div className="">
         <div className="flex max-lg:flex-col max-lg:gap-10 gap-20">
           {/* Contenu descriptif */}
@@ -106,24 +113,16 @@ export default function UseTechno() {
                     ? 'border-gray/60 bg-gray/10 text-gray' 
                     : 'border-white/10 hover:border-gray/60 group-hover:bg-gray/10 group-hover:text-gray'
                 }`}>
-                  {/* Image ou Icône */}
-                  {item.isImage ? (
-                    <div className="relative max-lg:h-10 max-lg:w-10 h-12 w-12 flex items-center justify-center">
-                      <Image
-                        src={item.icon}
-                        alt={item.label}
-                        fill
-                        className="object-contain transition-transform duration-300"
-                        sizes="(max-width: 48px) 100vw, 48px"
-                      />
-                    </div>
-                  ) : (
-                    <item.icon className={`h-12 w-auto transition-colors duration-300 ${
-                      activeTech.label === item.label 
-                        ? 'text-gray' 
-                        : 'text-white/40 group-hover:text-gray'
-                    }`} />
-                  )}
+                  {/* Image */}
+                  <div className="relative max-lg:h-10 max-lg:w-10 h-12 w-12 flex items-center justify-center">
+                    <Image
+                      src={item.icon}
+                      alt={item.label}
+                      fill
+                      className="object-contain transition-transform duration-300"
+                      sizes="(max-width: 48px) 100vw, 48px"
+                    />
+                  </div>
                   
                   <span className={`text-base font-[500] text-center transition-colors ${
                     activeTech.label === item.label 

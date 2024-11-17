@@ -1,9 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion';
+import { motion, MotionProps } from 'framer-motion'; // Ajout de MotionProps
 import { ServiceCategory, ServiceOption, FormData, serviceOptions } from './types';
 import { cn } from '@/lib/utils';
-import { Check, Globe, ShoppingCart, Calendar, Wrench,  RefreshCcw, Palette, Share2, Brush, Target, LineChart, MousePointer } from 'lucide-react';
+import { Check, Globe, ShoppingCart, LucideProps, Calendar, Wrench, RefreshCcw, Palette, Share2, Brush, Target, LineChart, MousePointer } from 'lucide-react';
 
 interface StepOneProps {
   formData: FormData;
@@ -17,7 +17,7 @@ interface ServiceCheckboxProps {
   handleServiceChange: (category: ServiceCategory, service: string) => void;
 }
 
-const serviceIcons: Record<string, React.ComponentType> = {
+const serviceIcons: Record<string, React.ComponentType<LucideProps>> = {
   vitrine: Globe,
   ecommerce: ShoppingCart,
   booking: Calendar,
@@ -31,7 +31,6 @@ const serviceIcons: Record<string, React.ComponentType> = {
   optimization: LineChart,
   pixel: MousePointer,
 };
-
 const ServiceCheckbox = ({
   category,
   service,
@@ -118,20 +117,24 @@ const itemVariants = {
   show: { opacity: 1, y: 0 }
 };
 
+interface CategoryGridProps extends MotionProps {
+  category: ServiceCategory;
+  services: ServiceOption[];
+  formData: FormData;
+  handleServiceChange: (category: ServiceCategory, service: string) => void;
+}
+
 const CategoryGrid = ({ 
   category, 
   services, 
   formData, 
-  handleServiceChange 
-}: { 
-  category: ServiceCategory; 
-  services: ServiceOption[];
-  formData: FormData;
-  handleServiceChange: (category: ServiceCategory, service: string) => void;
-}) => (
+  handleServiceChange,
+  ...motionProps
+}: CategoryGridProps) => (
   <motion.div
     variants={itemVariants}
     className="flex flex-col"
+    {...motionProps}
   >
     <h4 className="text-[#CEF440] text-xl font-semibold mb-2">
       {category.toUpperCase()}
@@ -155,14 +158,13 @@ export default function StepOne({ formData, handleServiceChange }: StepOneProps)
   return (
     <div className="w-full">
       <motion.div 
-        className=""
         initial="hidden"
         animate="show"
         variants={containerVariants}
       >
-        <div className="space-y-4  mb-10">
+        <div className="space-y-4 mb-10">
           <motion.h3 
-            className="text-6xl max-xl:text-5xl  max-xs:text-4xl   uppercase leading-[1.1] text-gray font-bold"
+            className="text-6xl max-xl:text-5xl max-xs:text-4xl uppercase leading-[1.1] text-gray font-bold"
             variants={itemVariants}
           >
             Travaillons ensemble<b className='text-primary'>.</b>
@@ -176,7 +178,7 @@ export default function StepOne({ formData, handleServiceChange }: StepOneProps)
         </div>
         
         <motion.div
-          className="grid grid-cols-3 max-xl:grid-cols-1 justify-start gap-10 max-:grid-cols-1  items-start"
+          className="grid grid-cols-3 max-xl:grid-cols-1 justify-start gap-10 max-:grid-cols-1 items-start"
           variants={containerVariants}
         >
           {(Object.entries(serviceOptions) as [ServiceCategory, ServiceOption[]][]).map(([category, services]) => (
