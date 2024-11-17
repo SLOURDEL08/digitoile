@@ -28,7 +28,7 @@ export default function LayoutContent({
     none: '',
     sm: 'space-y-8',
     md: 'space-y-16',
-    lg: 'space-y-20'
+    lg: 'space-y-28 max-md:space-y-14'
   };
 
   return (
@@ -40,7 +40,7 @@ export default function LayoutContent({
       )}
     >
       {withContainer ? (
-        <div className="p-14 py-20">
+        <div className="p-14 overflow-hidden py-20 max-md:p-8  max-md:py-10 max-xs:p-6 max-xs:py-8 ">
           <div className={cn(
             "flex flex-col",
             spacingVariants[spacing]

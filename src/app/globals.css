@@ -3,6 +3,10 @@
 @tailwind utilities;
  
 
+
+body{
+  background-color: #151516;
+}
 .gradient-bg{
     background: linear-gradient(45deg, #CEF440, #7761B7, #CEF440, #7761B7, #CEF440, #7761B7);
         background-size: 400% 400%;
@@ -13,7 +17,21 @@ input{
   border-radius: 200px;
 }
 
+.h-screened{
+  height: calc(100vh - 6rem);
+}
 
+ .anim-gray-bg {
+      background: linear-gradient(45deg, #D5D5D580, #D5D5D520, #D5D5D580, #D5D5D520, #D5D5D580, #D5D5D520);
+        background-size: 400% 400%;
+    animation: Gradient 25s ease infinite;
+ }
+
+  .anim-black-bg {
+      background: linear-gradient(90deg, #15151605, #15151620, #15151605, #15151620, #15151605, #15151620);
+        background-size: 400% 400%;
+    animation: Gradient 10s ease infinite;
+ }
 
 @keyframes Gradient {
   0% {
@@ -26,7 +44,6 @@ input{
     background-position: 0% 50%;
   }
 }
-
 
 
 @keyframes scroll-right {
@@ -46,3 +63,29 @@ input{
 .animate-scroll-left {
   animation: scroll-left 30s linear infinite;
 }
+
+
+@layer utilities {
+  .backdrop-blur-transition {
+    @apply transition-all duration-500 ease-in-out;
+    backdrop-filter: var(--blur-value, blur(0px));
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+}
+
+.smart-title {
+  font-size: clamp(3rem, 3vw + 2rem, 9rem);
+  line-height: 1;
+
+}
+
+
+

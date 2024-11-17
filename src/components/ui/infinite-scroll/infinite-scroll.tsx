@@ -1,8 +1,7 @@
-// src/components/ui/infinite-scroll/infinite-scroll.tsx
 'use client';
 
 import { cn } from "@/lib/utils";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 interface InfiniteScrollProps {
@@ -24,70 +23,80 @@ export const InfiniteScroll = ({
   direction = 'left',
   speed = 'slow',
   gap = 20,
-  pauseOnHover = true,
+  pauseOnHover = false,
   separatorSize = {
     width: 35,
     height: 35
   }
 }: InfiniteScrollProps) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [duplicateWords, setDuplicateWords] = useState<string[]>([]);
-
   const speedMap = {
     slow: 200,
     normal: 30,
     fast: 20,
   };
 
-  const calculateDuplicates = useCallback(() => {
-    if (!scrollRef.current) return;
-    
-    const containerWidth = scrollRef.current.offsetWidth;
-    const contentWidth = containerWidth / words.length;
-    const duplicatesNeeded = Math.ceil(window.innerWidth / contentWidth) + 1;
-    
-    setDuplicateWords(Array(duplicatesNeeded).fill(words).flat());
-  }, [words]);
+  const separatorStyle = {
+    width: separatorSize.width || 35,
+    height: separatorSize.height || 35,
+  };
 
+  // Référence pour obtenir la largeur du conteneur
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [sliderWidth, setSliderWidth] = useState(0);
+
+  // Calculer la largeur du conteneur lors du premier rendu et à chaque redimensionnement
   useEffect(() => {
-    calculateDuplicates();
-    window.addEventListener('resize', calculateDuplicates);
-    return () => window.removeEventListener('resize', calculateDuplicates);
-  }, [calculateDuplicates]);
+    const handleResize = () => {
+      if (scrollRef.current) {
+        setSliderWidth(scrollRef.current.offsetWidth);
+      }
+    };
 
-  const Separator = () => (
-    <Image 
-      src="/images/star.webp"
-      alt="separator"
-      width={separatorSize.width}
-      height={separatorSize.height}
-      className="object-contain"
-    />
-  );
+    handleResize(); // Initial calculation
+    window.addEventListener('resize', handleResize);
+    
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Définition de la direction de l'animation
+  const animationDirection = direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right';
+
+  // Calculer le nombre de "dupes" nécessaires pour que le défilement soit continu
+  const duplicateWords = [...words, ...words]; // Dupliquer les mots pour garantir un défilement continu
 
   return (
     <div 
+      ref={scrollRef}
       className={cn(
-        "overflow-hidden whitespace-nowrap w-full",
+        "overflow-hidden whitespace-nowrap text-4xl w-full relative",
         className
       )}
-      ref={scrollRef}
     >
-      <div 
+      <div
         className={cn(
           "inline-flex items-center whitespace-nowrap gap-[--gap]",
           pauseOnHover && "hover:[animation-play-state:paused]",
-          direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'
+          animationDirection
         )}
         style={{ 
           '--gap': `${gap}px`,
           '--speed': `${speedMap[speed]}s`,
+          transform: `translateX(-${sliderWidth / 2}px)`, // Centrer le contenu au démarrage
         } as React.CSSProperties}
       >
         {duplicateWords.map((word, idx) => (
           <React.Fragment key={idx}>
             <span className="whitespace-nowrap">{word}</span>
-            <Separator />
+            <div className="flex-shrink-0">
+              <Image 
+                src="/images/star.webp"
+                alt="separator"
+                width={separatorStyle.width}
+                height={separatorStyle.height}
+                className="object-contain max-md:w-8"
+                layout="intrinsic"
+              />
+            </div>
           </React.Fragment>
         ))}
       </div>

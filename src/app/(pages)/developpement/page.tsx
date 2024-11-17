@@ -1,93 +1,118 @@
 'use client'
 
 import LayoutContent from "@/components/layout/content";
-import PluginViewer from "@/components/plugin-viewer";
 import ProjectGrid from "@/components/projects/project-grid";
-
-import ThemeViewer from "@/components/sections/theme-viewer";
+import ThemeViewer from "@/components/sections/theme-viewer/theme-viewer";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/ui/hero/hero";
 import WebCollapse from "@/components/developpement/web-collapse";
-
+import { IconArrow } from "@/components/ui/icons";
+import Typography from "@/components/ui/typography";
+import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll";
 import Image from "next/image";
 
-const categories = [
-  { id: 1, name: 'Développement' },
-  { id: 2, name: 'Design' },
-  { id: 3, name: 'Booking' },
-];
-
 export default function Developpement() {
-
-  
-  
-
+  const words = [
+    "DÉVELOPPEMENT WEB",
+    "DESIGN UI/UX",
+    "MARKETING DIGITAL",
+    "REFERENCEMENT",
+    "E-COMMERCE",
+  ];
 
   return (
     <div className="relative">
-          <Hero className="w-full text-center">
-              
-              <h1 className="text-7xl text-secondary font-semibold uppercase leading-none">découvrez nos extensions premium indispensable</h1>
-                <PluginViewer/>
-          </Hero>
-          
-      <LayoutContent className="">
-                      <WebCollapse/>
+      <Hero className="text-center">
+        <div className="relative w-full pb-10 max-md:pb-0 overflow-visible overflow-hidden bg-primary">
+          {/* Image Feu */}
+          <div className="absolute right-0 bottom-0 z-10">
+            <div className="rounded-lg w-auto overflow-hidden">
+              <Image 
+                src="/images/ifire.png" 
+                alt="Floating fire image" 
+                width={100}
+                height={100}
+                className="w-[80px] h-[80px] 
+                  lg:w-[100px] lg:h-[100px] 
+                  xl:w-[120px] xl:h-[120px] 
+                  2xl:w-[140px] 2xl:h-[140px]
+                  object-contain"
+                draggable="false"
+              />
+            </div>
+          </div>
 
-          
-      
+          {/* Image Pinceau */}
+          <div className="max-md:hidden absolute -left-0 -bottom-0 z-10">
+            <div className="rounded-lg overflow-hidden">
+              <Image 
+                src="/images/ilayers.png" 
+                alt="Floating layers image" 
+                width={100}
+                height={100}
+                className="w-[140px] h-[140px] 
+                  lg:w-[180px] lg:h-[180px] 
+                  xl:w-[220px] xl:h-[220px] 
+                  2xl:w-[260px] 2xl:h-[260px]
+                  object-contain"
+                draggable="false"
+              />
+            </div>
+          </div>
 
-            
-         
+          <div className="w-full mx-auto">
+            <div className="">
+              {/* Left Content */}
+              <div className="space-y-8 max-md:space-y-6 max-md:text-left">
+                <div className="inline-flex items-center gap-2 anim-black-bg hover:bg-secondary/10 group transition-all duration-500 bg-secondary/10 rounded-full pl-2 pr-4 py-1.5">
+                  <span className="bg-secondary text-white font-[500] max-xs:text-xs max-md:text-sm text-base px-2.5 py-0.5 rounded-full">New</span>
+                  <span className="text-lg max-md:text-base max-xs:text-sm text-secondary">Plugins & thèmes personnalisables</span>
+                </div>
 
-        
-        
-        <ThemeViewer />
-         <div className="flex w-full max-lg:flex-col gap-8 justify-between">
-        {/* Titre et catégories */}
-            <div className="space-y-4">
-              <h1 className="text-7xl font-bold text-gray uppercase">
-                Nos projets<b className="text-primary">.</b>
-              </h1>
-              <div className="flex gap-4 items-center">
-                {categories.map((category) => (
-                  <button
-                    key={category.id}
-                    className="px-4 py-1.5 border font-[500] hover:bg-gray hover:text-secondary
-                              border-gray/50 text-gray/50 transition-all duration-500 rounded-full"
-                  >
-                    {category.name}
-                  </button>
-                ))}
+                <Typography className="max-w-6xl mx-auto" variant="title">
+                  Faites développer votre site web sur-mesure
+                </Typography>
+
+                <p className="text-2xl max-xs:text-lg max-md:mx-0 max-md:w-full max-md:text-xl w-2/3 mx-auto text-black/70 leading-relaxed">
+                  Des solutions web professionnelles adaptées à vos besoins. 
+                  De la vitrine à le-commerce, nous donnons vie à vos projets digitaux.
+                </p>
+
+                <div className="flex justify-center flex-wrap max-md:justify-start max-md:gap-4 gap-8">
+                  <Button className="">
+                    Nos services
+                    <IconArrow/>
+                  </Button>
+                  <Button variant="outline" className="">
+                    Nos projets
+                    <IconArrow variant="outline"/>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Content - Services Grid */}
+              <div className="relative">
+                {/* Gradient Elements */}
+                <div className="absolute -top-10 right-10 w-20 h-20 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-xl" />
+                <div className="absolute -top-40 -left-10 w-40 h-40 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl" />
               </div>
             </div>
-
-        {/* Description et CTA */}
-                  <div className="w-1/3 max-lg:w-full">
-                    <span className="text-gray/50 leading-9 text-xl">
-                      Retrouvez nos projets web, nos créations graphiques et bien plus..
-                    </span>
-                    <Button 
-                      variant="ghost" 
-                      className="mt-4 flex group transition-all duration-500 hover:text-gray items-center gap-4 text-gray/50"
-                    >
-                      Voir plus
-                      <Image 
-                        src="/images/ghost-arrow.webp" 
-                        alt="" 
-                        width={24} 
-                        height={24} 
-                        className="w-6 transition-all duration-500 group-hover:opacity-95 invert opacity-45" 
-                      />
-                    </Button>
-                    </div>
-    
+          </div>
         </div>
+
+        <div className="relative -mx-10">
+          <InfiniteScroll
+            words={words}
+            className="text-4xl max-md:text-3xl mt-14 italic font-bold text-secondary"
+          />
+        </div>
+      </Hero>
+          
+      <LayoutContent className="">
+        <WebCollapse/>
+        <ThemeViewer />
         <ProjectGrid />
-        
       </LayoutContent>
-   
-     
     </div>
   );
 }

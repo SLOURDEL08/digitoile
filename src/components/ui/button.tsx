@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // Définition des variants du bouton
 const buttonVariants = cva(
   // Classe de base commune à tous les variants
-  "rounded-full group border-2 flex gap-1 text-xl justify-center items-center uppercase",
+  "rounded-full group border-2 !leading-[1] flex gap-2.5 text-xl max-md:text-base justify-center items-center uppercase",
   {
     variants: {
       variant: {
@@ -19,8 +19,8 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        sm: "h-8 px-3 text-xs",
-        lg: "px-5 py-2",
+        sm: " px-5 py-2",
+        lg: "px-5 py-3",
         icon: "h-10 w-10",
       },
       fullWidth: {
