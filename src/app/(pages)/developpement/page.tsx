@@ -64,7 +64,7 @@ export default function Developpement() {
             <div className="">
               {/* Left Content */}
               <div className="space-y-8 max-md:space-y-6 max-md:text-left">
-                <div className="inline-flex items-center gap-2 anim-black-bg hover:bg-secondary/10 group transition-all duration-500 bg-secondary/10 rounded-full pl-2 pr-4 py-1.5">
+                <div className="inline-flex items-center font-[500] gap-2 anim-black-bg hover:bg-secondary/10 group transition-all duration-500 bg-secondary/10 rounded-full pl-2 pr-4 py-1.5">
                   <span className="bg-secondary text-white font-[500] max-xs:text-xs max-md:text-sm text-base px-2.5 py-0.5 rounded-full">New</span>
                   <span className="text-lg max-md:text-base max-xs:text-sm text-secondary">Plugins & thèmes personnalisables</span>
                 </div>
@@ -73,7 +73,7 @@ export default function Developpement() {
                   Faites développer votre site web sur-mesure
                 </Typography>
 
-                <p className="text-2xl max-xs:text-lg max-md:mx-0 max-md:w-full max-md:text-xl w-2/3 mx-auto text-black/70 leading-relaxed">
+                <p className="text-2xl font-[500] max-xs:text-lg max-md:mx-0 max-md:w-full max-md:text-xl w-2/3 mx-auto text-black/70 leading-relaxed">
                   Des solutions web professionnelles adaptées à vos besoins. 
                   De la vitrine à le-commerce, nous donnons vie à vos projets digitaux.
                 </p>

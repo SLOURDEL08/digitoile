@@ -14,7 +14,7 @@ export default function CTACall() {
         Besoin de conseils pour booster votre business ?
       </Typography>
       
-      <p className="text-2xl max-xs:hidden max-md:text-xl max-xs:text-base  text-gray">
+      <p className="text-2xl font-[500] max-xs:hidden max-md:text-xl max-xs:text-base  text-gray">
         Réservez un créneau pour vous faire rappeler et démarrer le processus.
       </p>
       

@@ -185,7 +185,7 @@ export default function StepTwo({ formData, handleProjectInfoChange }: StepTwoPr
           Où en est votre projet ?
         </motion.h2>
         <motion.p 
-          className="text-[#D5D5D5]/70 text-xl"
+          className="text-[#D5D5D5]/70 font-[500] text-xl"
           variants={itemVariants}
         >
           Dites-nous en plus sur votre situation actuelle

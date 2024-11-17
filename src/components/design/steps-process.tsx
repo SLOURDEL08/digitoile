@@ -64,7 +64,7 @@ export default function StepsProcess() {
                 {/* Numéro */}
                 <div className="absolute top-6 right-6 flex items-start">
                   <span 
-                    className={`text-7xl font-bold transition-colors duration-500 
+                    className={`text-7xl  font-bold transition-colors duration-500 
                       ${activeCard === index ? 'text-[#CEF440]/20' : 'text-[#CEF440]/10'}
                       group-hover:text-[#CEF440]/20`}
                   >
@@ -81,7 +81,7 @@ export default function StepsProcess() {
                   >
                     {phase}
                   </h3>
-                  <p className="text-gray/70 w-[85%] text-base leading-relaxed">
+                  <p className="text-gray/70 font-[500] w-[85%] text-base leading-relaxed">
                     Notre approche méthodique garantit des résultats exceptionnels à chaque étape du projet.
                   </p>
                 </div>

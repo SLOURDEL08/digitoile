@@ -101,7 +101,7 @@ export default function StepThree({ formData, handleContactChange }: StepThreePr
             Informations de contact
           </motion.h3>
           <motion.p 
-            className="text-[#D5D5D5]/70 text-xl"
+            className="text-[#D5D5D5]/70 font-[500] text-xl"
             variants={itemVariants}
           >
             Renseignez vos coordonnées pour finaliser votre demande

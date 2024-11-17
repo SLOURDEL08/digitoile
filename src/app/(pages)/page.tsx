@@ -59,7 +59,7 @@ export default function Home() {
           >
                 <div
 
-                  className="inline-flex items-center gap-2 anim-black-bg hover:bg-secondary/10 group tracking-widest  transition-all  duration-500 bg-secondary/10 rounded-full px-2 py-1.5"
+                  className="inline-flex font-[500] items-center gap-2 anim-black-bg hover:bg-secondary/10 group tracking-widest  transition-all  duration-500 bg-secondary/10 rounded-full px-2 py-1.5"
             >
                                 <span className="bg-secondary text-gray font-[500] max-xs:text-xs max-md:text-sm text-base px-2 p-0.5 rounded-full"><AtSign className="w-4"/></span>
 

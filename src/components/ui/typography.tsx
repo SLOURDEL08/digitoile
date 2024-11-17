@@ -12,7 +12,7 @@ interface TypographyProps {
 }
 
 const variantStyles: Record<VariantType, string> = {
-  title: 'smart-title font-bold text-secondary !leading-[1] uppercase  max-xs:text-4xl max-sm:text-5xl',
+  title: 'smart-title  text-secondary !leading-[1] uppercase  max-xs:text-4xl max-sm:text-5xl',
   subtitle: 'text-6xl font-bold text-secondary !leading-[1] uppercase max-xs:text-3xl max-sm:text-5xl',
   description: 'text-base text-gray-600 leading-relaxed'
 };

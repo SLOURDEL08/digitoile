@@ -16,7 +16,7 @@ import { IconArrow } from '@/components/ui/icons';
 const ContactInfo = () => (
   <div className="space-y-12">
     <div className="space-y-12  max-lg:space-y-0 max-lg:gap-10 max-lg:flex items-center">
-      <div className="space-y-6 max-sm:items-start max-sm: max-lg:w-full  max-lg:flex max-lg:gap-4 max-lg:justify-between max-lg:items-center max-lg:space-y-0 uppercase max-lg:text-xl max-md:text-lg max-sm:text-base text-lg font-[500] leading-5">
+      <div className="space-y-8 max-sm:items-start max-sm: max-lg:w-full  max-lg:flex max-lg:gap-4 max-lg:justify-between max-lg:items-center max-lg:space-y-0 uppercase max-lg:text-xl max-md:text-lg max-sm:text-base text-lg font-[500] leading-5">
         <a href="tel:+33600000000" className="flex max-sm:hidden items-center space-x-4 text-[#D5D5D5] hover:text-[#CEF440] transition-colors group">
           <PhoneCall className='max-lg:w-8 max-lg:h-8 max-md:w-6 max-md:h-6'/>
           <span className='leading-5'>+33 6 00 00 00 00</span>

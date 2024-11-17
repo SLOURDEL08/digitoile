@@ -85,7 +85,7 @@ export const ThemeItem = ({ theme, isActive, onClick }: ThemeItemProps) => (
     <div className="flex items-start justify-between">
       <div className="flex-1">
         <div className="flex items-center gap-3">
-          <h3 className="text-2xl font-[500] uppercase">{theme.label}</h3>
+          <h3 className="text-2xl font-[700] uppercase">{theme.label}</h3>
           <span className={cn(
             "text-xs px-2 py-1 rounded-full",
             {
@@ -98,7 +98,7 @@ export const ThemeItem = ({ theme, isActive, onClick }: ThemeItemProps) => (
             {theme.type}
           </span>
         </div>
-        <p className="mt-1 text-sm opacity-80">
+        <p className="mt-1 text-sm font-[500] opacity-80">
           {theme.description}
         </p>
         {!isActive && <ThemeMetricsDisplay metrics={theme.metrics} />}
@@ -118,10 +118,10 @@ export const ThemeItem = ({ theme, isActive, onClick }: ThemeItemProps) => (
         
         <div className="mt-6 grid grid-cols-2 gap-6">
           <div>
-            <h4 className="text-sm font-medium mb-2">Fonctionnalités</h4>
+            <h4 className="text-sm font-[600] mb-2">Fonctionnalités</h4>
             <ul className="space-y-2">
               {theme.features.map((feature, index) => (
-                <li key={index} className="flex items-center gap-2 text-sm">
+                <li key={index} className="flex font-[500] items-center gap-2 text-sm">
                   <ChevronRight className="h-3 w-3 text-primary" />
                   {feature}
                 </li>
@@ -129,10 +129,10 @@ export const ThemeItem = ({ theme, isActive, onClick }: ThemeItemProps) => (
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-medium mb-2">Extensions</h4>
+            <h4 className="text-sm font-[600] mb-2">Extensions</h4>
             <ul className="space-y-2">
               {theme.extensions.map((extension, index) => (
-                <li key={index} className="flex items-center gap-2 text-sm">
+                <li key={index} className="flex font-[500] items-center gap-2 text-sm">
                   <div className="w-1.5 h-1.5 rounded-full bg-gray/60" />
                   {extension}
                 </li>

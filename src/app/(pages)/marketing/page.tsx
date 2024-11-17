@@ -88,7 +88,7 @@ export default function Marketing() {
                         text-sm transition-colors duration-300
                         ${activeService === service.id 
                           ? 'text-gray/60' 
-                          : 'text-gray/20 group-hover:text-gray/80'
+                          : 'text-gray/20 font-[500] group-hover:text-gray/80'
                         }
                       `}>
                         {service.shortDescription}
@@ -122,7 +122,7 @@ export default function Marketing() {
                           </h3>
                         </div>
                       </div>
-                      <p className="text-gray/60 text-lg">
+                      <p className="text-gray/60 font-[500] text-lg">
                         {activeContent.fullDescription}
                       </p>
                     </div>

@@ -86,7 +86,7 @@ export const InfiniteScroll = ({
       >
         {duplicateWords.map((word, idx) => (
           <React.Fragment key={idx}>
-            <span className="whitespace-nowrap">{word}</span>
+            <span className="whitespace-nowrap font-[800]">{word}</span>
             <div className="flex-shrink-0">
               <Image 
                 src="/images/star.webp"

@@ -68,7 +68,7 @@ export default function ProjectGrid() {
 
         {/* Description et CTA */}
                   <div className="w-1/3 max-lg:w-full">
-                    <span className="text-gray/50 leading-9 text-xl">
+                    <span className="text-gray/50 font-[500] leading-9 text-xl">
                       Retrouvez nos projets web, nos créations graphiques et bien plus..
                     </span>
                     <Button 

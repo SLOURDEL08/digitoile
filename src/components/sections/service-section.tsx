@@ -52,7 +52,7 @@ export default function ServicesSection() {
           <Typography variant="title" className="text-gray mb-2 max-md:mb-4">
             NOS SERVICES<b className="text-primary">.</b>
           </Typography>
-          <span className="text-gray/50 leading-9 text-xl">
+          <span className="text-gray/50 font-[500] leading-9 text-xl">
             Retrouvez nos projets web, nos créations graphiques et bien plus..
           </span>
         </div>
@@ -63,7 +63,7 @@ export default function ServicesSection() {
             {categories.map(category => (
               <button
                 key={category.id}
-                className="px-4 py-1.5 border max-md:text-sm font-[500] hover:bg-gray hover:text-secondary
+                className="px-4 py-1.5 border max-md:text-sm font-[600] hover:bg-gray hover:text-secondary
                           border-gray/50 text-gray/50 transition-all duration-500 rounded-full"
               >
                 {category.name}
@@ -74,7 +74,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Liste des services */}
-      <div className="flex font-[500] flex-col w-full mt-14 ">
+      <div className="flex font-[600] flex-col w-full mt-14 ">
         {services.map(service => (
           <ServiceItem 
             key={service.id}

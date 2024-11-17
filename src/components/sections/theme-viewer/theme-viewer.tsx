@@ -57,7 +57,7 @@ export default function ThemeViewer() {
               Choisissez votre thème
               <span className="text-primary">.</span>
             </Typography>
-            <p className="text-gray/50 leading-9 text-xl">
+            <p className="text-gray/50 font-[500] leading-9 text-xl">
               Des designs modernes et adaptés à vos besoins
             </p>
           </div>

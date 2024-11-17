@@ -8,13 +8,13 @@ import { cn } from "@/lib/utils"
 // Définition des variants du bouton
 const buttonVariants = cva(
   // Classe de base commune à tous les variants
-  "rounded-full group border-2 !leading-[1] flex gap-2.5 text-xl max-md:text-base justify-center items-center uppercase",
+  "rounded-full group font-[600]  border-2 !leading-[1] flex gap-2.5 text-xl max-md:text-base justify-center items-center uppercase",
   {
     variants: {
       variant: {
-        primary: "bg-secondary border-secondary text-primary font-[500]",
+        primary: "bg-secondary border-secondary text-primary ",
         secondary: "bg-secondary text-white hover:bg-secondary-600 focus-visible:ring-secondary-500",
-        outline: "bg-transparent border-secondary hover:bg-secondary hover:text-primary font-[500] text-secondary",
+        outline: "bg-transparent border-secondary hover:bg-secondary hover:text-primary text-secondary",
         ghost: "!p-0 bg-transparent border-transparent font-semibold",
         link: "text-primary underline-offset-4 hover:underline",
       },

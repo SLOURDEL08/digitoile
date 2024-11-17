@@ -48,7 +48,7 @@ export default function WebCollapse() {
               <div className="flex max-sm:gap-6 max-xs:gap-4 items-center gap-8">
                 <Icon size={50} className={cn('text-gray/60 max-xs:w-8 max-md:w-10 max-md:h-10 max-xs:h-8 group-hover:text-primary', isOpen ? 'text-primary' : '')}/>
                 <div className="text-left flex items-center gap-10">
-                  <h3 className={cn('text-5xl max-md:text-4xl max-xs:text-3xl text-gray/60 group-hover:text-primary font-[500]', isOpen ? 'text-primary' : '')}>
+                  <h3 className={cn('text-5xl font-[600] max-md:text-4xl max-xs:text-3xl text-gray/60 group-hover:text-primary ', isOpen ? 'text-primary' : '')}>
                     {formatTitle(service.title)}
                   </h3>
                   <p className="text-sm max-lg:hidden font-medium rounded-full bg-gray/20 group-hover:text-secondary group-hover:bg-gray text-gray p-1.5 px-4">{service.price}</p>

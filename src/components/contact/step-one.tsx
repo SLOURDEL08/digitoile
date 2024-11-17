@@ -170,7 +170,7 @@ export default function StepOne({ formData, handleServiceChange }: StepOneProps)
             Travaillons ensemble<b className='text-primary'>.</b>
           </motion.h3>
           <motion.p 
-            className="text-[#D5D5D5]/70 text-xl"
+            className="text-[#D5D5D5]/70 font-[500] text-xl"
             variants={itemVariants}
           >
             Sélectionnez les services qui correspondent à vos besoins

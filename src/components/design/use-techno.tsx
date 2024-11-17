@@ -82,7 +82,7 @@ export default function UseTechno() {
               key={activeTech.description}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-gray/70 text-xl max-w-xl leading-relaxed"
+              className="text-gray/70 font-[500] text-xl max-w-xl leading-relaxed"
             >
               {activeTech.description}
             </motion.p>

@@ -8,8 +8,16 @@ import { Button } from '../ui/button';
 import { IconArrow } from '../ui/icons';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 
+// Supprimez Contact de navigationItems pour le menu desktop
 const navigationItems = [
-  { name: 'Home', href: '/' },
+  { name: 'Développement', href: '/developpement' },
+  { name: 'Design', href: '/design' },
+  { name: 'Marketing', href: '/marketing' },
+  { name: 'Projets', href: '/projets' },
+];
+
+// Créez un array séparé pour le menu mobile qui inclut Contact
+const mobileNavigationItems = [
   { name: 'Développement', href: '/developpement' },
   { name: 'Design', href: '/design' },
   { name: 'Marketing', href: '/marketing' },
@@ -35,14 +43,14 @@ export default function Navigation() {
         </div>
         
         <nav className="flex-1 flex flex-col gap-4 p-10 max-md:p-8">
-          {navigationItems.map((item, index) => (
+          {mobileNavigationItems.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
                 "relative group py-4 px-6 border border-[#CEF440]/10 text-5xl max-sm:text-2xl font-bold uppercase transition-all duration-300",
-                index === navigationItems.length - 1
+                index === mobileNavigationItems.length - 1
                   ? "bg-primary text-secondary rounded-full"
                   : pathname === item.href 
                     ? "bg-[#CEF440]/10 text-[#CEF440]" 
@@ -50,12 +58,12 @@ export default function Navigation() {
               )}
             >
               <span className="relative z-10">{item.name}</span>
-              {pathname === item.href && index !== navigationItems.length - 1 && (
+              {pathname === item.href && index !== mobileNavigationItems.length - 1 && (
                 <span className="absolute flex right-6 top-1/2 -translate-y-1/2 text-[#CEF440]">
                   •
                 </span>
               )}
-              {index === navigationItems.length - 1 && (
+              {index === mobileNavigationItems.length - 1 && (
                 <span className="absolute flex right-6 top-1/2 -translate-y-1/2">
                   <IconArrow className="text-secondary w-4 h-4" />
                 </span>
@@ -72,7 +80,7 @@ export default function Navigation() {
       <header className="relative h-24 my-auto bg-primary py-6">
         <div className="max-w-[1800px] max-sm:px-6 mx-auto px-8">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-5xl max-md:text-4xl font-bold">
+            <Link href="/" className="text-5xl max-md:text-4xl">
               DIGITOILE
             </Link>
 
@@ -82,7 +90,7 @@ export default function Navigation() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    'text-lg hover:text-primary',
+                    'text-lg font-[600] hover:text-primary',
                     pathname === item.href ? 'text-black' : 'text-muted-foreground'
                   )}
                 >
