@@ -2,7 +2,6 @@
 
 import { cn } from '@/lib/utils';
 import { HeroProps } from './hero.types';
-import Navigation from '@/components/layout/navigation';
 
 export function Hero({
   children,

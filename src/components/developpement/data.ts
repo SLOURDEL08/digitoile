@@ -4,21 +4,20 @@ import {
   Calendar, 
   Code, 
   BarChart, 
-  Mail,
+
   MessageSquare,
-  Image,
+
   Share2,
   CreditCard,
   Box,
   Truck,
-  Users,
   LineChart,
   CalendarRange,
   BellRing,
   Wallet,
   FileCheck
 } from 'lucide-react';
-import { Plugin, WebService } from './types';
+import { WebService } from './types';
 
 export const webServices: WebService[] = [
   {

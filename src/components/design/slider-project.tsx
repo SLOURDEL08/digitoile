@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 import Typography from "../ui/typography";
+import Image from "next/image";
 
 type Project = {
   title: string;
@@ -88,10 +89,12 @@ export default function SliderProject() {
             exit={{ opacity: 0, y: -20 }}
             className="relative overflow-hidden aspect-[16/9]"
           >
-            <img 
+            <Image 
               src={currentProject.image} 
               alt={currentProject.title}
               className="w-full h-full object-cover"
+              width={1200}
+              height={1200}
             />
             
             <div className="absolute inset-0 bg-gradient-to-t from-[#151516] via-[#151516]/40 to-transparent">

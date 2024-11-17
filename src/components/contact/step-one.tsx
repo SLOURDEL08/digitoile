@@ -3,8 +3,7 @@
 import { motion } from 'framer-motion';
 import { ServiceCategory, ServiceOption, FormData, serviceOptions } from './types';
 import { cn } from '@/lib/utils';
-import { Check, Globe, ShoppingCart, Calendar, Wrench,Tool,  RefreshCcw, Palette, Share2, Brush, Target, LineChart, MousePointer } from 'lucide-react';
-import { IconArrow } from '../ui/icons';
+import { Check, Globe, ShoppingCart, Calendar, Wrench,  RefreshCcw, Palette, Share2, Brush, Target, LineChart, MousePointer } from 'lucide-react';
 
 interface StepOneProps {
   formData: FormData;
@@ -23,7 +22,7 @@ const serviceIcons: Record<string, React.ComponentType> = {
   ecommerce: ShoppingCart,
   booking: Calendar,
   surmesure: Wrench,
-  maintenance: Tool,
+  maintenance: Wrench,
   refonte: RefreshCcw,
   'web-design': Palette,
   'social-media': Share2,

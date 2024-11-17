@@ -36,9 +36,9 @@ function ServiceItem({ name }: { name: string }) {
       </div>
       
       {/* Icône */}
-       <div className='group-hover:bg-primary max-sm:p-3 max-xs:p-2.5 p-4'>
-                   <IconArrow variant='gray' className="w-12 max-sm:w-8 max-sm:h-8 max-xs:w-6 max-xs:h-6   h-12"/>
-                </div>
+      <div className='group-hover:bg-primary max-sm:p-3 max-xs:p-2.5 p-4'>         
+        <IconArrow variant='gray' className="w-12 max-sm:w-8 max-sm:h-8 max-xs:w-6 max-xs:h-6 h-12"/>      
+      </div>
     </div>
   );
 }
@@ -63,7 +63,7 @@ export default function ServicesSection() {
             {categories.map(category => (
               <button
                 key={category.id}
-                className="px-4   py-1.5 border max-md:text-sm font-[500] hover:bg-gray hover:text-secondary
+                className="px-4 py-1.5 border max-md:text-sm font-[500] hover:bg-gray hover:text-secondary
                           border-gray/50 text-gray/50 transition-all duration-500 rounded-full"
               >
                 {category.name}
@@ -74,10 +74,10 @@ export default function ServicesSection() {
       </div>
 
       {/* Liste des services */}
-      <div className="flex  font-[500] flex-col w-full mt-14 ">
-        {services.map((service, index) => (
+      <div className="flex font-[500] flex-col w-full mt-14 ">
+        {services.map(service => (
           <ServiceItem 
-            key={service.id} 
+            key={service.id}
             name={service.name}
           />
         ))}

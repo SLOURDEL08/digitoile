@@ -9,7 +9,7 @@ import   Navigation  from '@/components/contact/navigation';
 import  StepOne  from '@/components/contact/step-one';
 import  StepTwo   from '@/components/contact/step-two';
 import  StepThree  from '@/components/contact/step-three';
-import { Phone, Mail, MapPin, LocateIcon, PoundSterlingIcon, AtSign, PhoneCall } from 'lucide-react';
+import { MapPin, AtSign, PhoneCall } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { IconArrow } from '@/components/ui/icons';
 

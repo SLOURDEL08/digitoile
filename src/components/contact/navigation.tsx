@@ -18,7 +18,6 @@ export default function Navigation({
   totalSteps, 
   onNext, 
   onPrev,
-  className,
   onSubmit 
 }: NavigationProps) {
   return (

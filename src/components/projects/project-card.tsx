@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { IconArrow } from "../ui/icons";
 
 interface ProjectCardProps {

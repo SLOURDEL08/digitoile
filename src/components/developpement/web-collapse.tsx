@@ -2,23 +2,13 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Check, Timer, Shield, Puzzle, CircleDot, Lock, Palette, Paintbrush, FileEdit, Smartphone, HeadphonesIcon } from 'lucide-react';
+import { Clock, Check, Puzzle, Lock,Paintbrush, HeadphonesIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { IconArrow } from '../ui/icons';
 import { webServices } from '../developpement/data';
 import { Button } from '../ui/button';
 
-function FeatureCard({ title, children, icon: Icon }: { title?: string; children: React.ReactNode; icon: React.ElementType }) {
-  return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-gray/10">
-      <h4 className="text-xl font-medium text-gray flex items-center gap-2 mb-6">
-        <Icon size={20} className="text-primary" />
-        {title}
-      </h4>
-      {children}
-    </div>
-  );
-}
+
 
 export default function WebCollapse() {
   const [openItem, setOpenItem] = useState<number | null>(null);
