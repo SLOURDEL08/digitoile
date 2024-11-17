@@ -9,44 +9,40 @@ import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/ui/hero/hero";
 import { IconArrow } from "@/components/ui/icons";
 import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll";
-import  Typography  from "@/components/ui/typography";
-import {  AtSign,  } from "lucide-react";
+import Typography from "@/components/ui/typography";
+import { AtSign } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
-
-
 export default function Home() {
-
-  
-    const words = [
+  const words = [
     "DÉVELOPPEMENT WEB",
     "DESIGN UI/UX",
     "MARKETING DIGITAL",
     "REFERENCEMENT",
     "E-COMMERCE",
   ];
-  // Référence pour mesurer la hauteur du contenu gauche
+
+  // Spécifier explicitement le type HTMLDivElement
   const leftContentRef = useRef<HTMLDivElement>(null);
-  // État pour stocker la hauteur
   const [contentHeight, setContentHeight] = useState<number>(0);
   const [isHovered, setIsHovered] = useState(false);
 
-
-  // Mesure la hauteur du contenu gauche
   useEffect(() => {
     if (leftContentRef.current) {
-      setContentHeight(leftContentRef.current.offsetHeight);
+      // Forcer le type avec as HTMLDivElement si nécessaire
+      const element = leftContentRef.current as HTMLDivElement;
+      setContentHeight(element.offsetHeight);
 
-      // Observer les changements de taille
       const resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
-          setContentHeight(entry.target.offsetHeight);
+          // Utiliser getBoundingClientRect() pour plus de compatibilité
+          const height = entry.target.getBoundingClientRect().height;
+          setContentHeight(height);
         }
       });
 
-      resizeObserver.observe(leftContentRef.current);
+      resizeObserver.observe(element);
 
-      // Nettoyage
       return () => resizeObserver.disconnect();
     }
   }, []);
