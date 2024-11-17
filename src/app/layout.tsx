@@ -4,10 +4,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Agence Digitale",
-    template: "%s | Agence Digitale"
+    default: "Digitoile",
+    template: "%s | Digitoile.fr"
   },
-  description: "Votre agence digitale de confiance",
+  description: "Faites la différences",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-CD-medium font-CD-regular font-CD-light font-light font-sans antialiased`} suppressHydrationWarning>
+      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-cd font-CD-medium font-CD-regular font-CD-light font-light font-sans antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>

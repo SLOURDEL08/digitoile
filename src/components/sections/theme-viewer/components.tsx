@@ -85,7 +85,7 @@ export const ThemeItem = ({ theme, isActive, onClick }: ThemeItemProps) => (
     <div className="flex items-start justify-between">
       <div className="flex-1">
         <div className="flex items-center gap-3">
-          <h3 className="text-2xl font-[700] uppercase">{theme.label}</h3>
+          <h3 className="text-2xl font-[800] uppercase">{theme.label}</h3>
           <span className={cn(
             "text-xs px-2 py-1 rounded-full",
             {
