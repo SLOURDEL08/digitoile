@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useRef } from "react";
 import Typography from "../ui/typography";
 import Image from "next/image";

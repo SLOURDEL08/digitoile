@@ -5,7 +5,6 @@ import LayoutContent from "@/components/layout/content";
 import { Hero } from "@/components/ui/hero/hero";
 import Typography from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import React, { useState } from "react";
 import SliderProject from "@/components/design/slider-project";
 import StepsProcess from "@/components/design/steps-process";
