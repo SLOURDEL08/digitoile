@@ -81,7 +81,7 @@ const ServiceCheckbox = ({
             </div>
 
             <span className={cn(
-              "text-lg font-medium transition-colors duration-200",
+              "text-lg font-medium leading-5 transition-colors duration-200",
               isChecked 
                 ? "text-[#CEF440]" 
                 : "text-[#D5D5D5]"
@@ -178,7 +178,7 @@ export default function StepOne({ formData, handleServiceChange }: StepOneProps)
         </div>
         
         <motion.div
-          className="grid grid-cols-3 max-xl:grid-cols-1 justify-start gap-10 max-:grid-cols-1 items-start"
+          className="grid grid-cols-4 max-xl:grid-cols-2 justify-start gap-10 max-sm:grid-cols-1 items-start"
           variants={containerVariants}
         >
           {(Object.entries(serviceOptions) as [ServiceCategory, ServiceOption[]][]).map(([category, services]) => (

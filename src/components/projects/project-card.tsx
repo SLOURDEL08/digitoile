@@ -1,13 +1,10 @@
+// src/components/projects/project-card.tsx
 'use client'
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { IconArrow } from "../ui/icons";
-
-interface ProjectCardProps {
-  title: string;
-  image: string;
-}
+import { ProjectCardProps } from "./types";  // Import des types
 
 export function ProjectCard({ title, image }: ProjectCardProps) {
   const [isActive, setIsActive] = useState(false);

@@ -1,4 +1,4 @@
-// types/contact-form.ts
+
 
 export type ServiceCategory = 'web' | 'design' | 'marketing';
 
@@ -11,12 +11,14 @@ export interface ServiceOptions {
   web: ServiceOption[];
   design: ServiceOption[];
   marketing: ServiceOption[];
+  autres: ServiceOption[];
 }
 
 export interface FormServices {
   web: string[];
   design: string[];
   marketing: string[];
+  autres: string[];
 }
 
 export interface ProjectInfo {
@@ -46,7 +48,8 @@ export const defaultFormData: FormData = {
   services: {
     web: [],
     design: [],
-    marketing: []
+    marketing: [],
+    autres: []
   },
   projectInfo: {
     hasWebsite: null,
@@ -71,10 +74,9 @@ export const serviceOptions: ServiceOptions = {
     { id: 'ecommerce', label: 'E-commerce' },
     { id: 'booking', label: 'Réservation' },
     { id: 'surmesure', label: 'Sur-mesure' },
-    { id: 'maintenance', label: 'Maintenance' },
   ],
   design: [
-    { id: 'web-design', label: 'Maquette Web' },
+    { id: 'web-design', label: 'Maquette' },
     { id: 'social-media', label: 'Réseaux Sociaux' },
     { id: 'branding', label: 'Identité Graphique' },
   ],
@@ -82,5 +84,10 @@ export const serviceOptions: ServiceOptions = {
     { id: 'tracking', label: 'Tracking' },
     { id: 'optimization', label: 'Optimisation' },
     { id: 'pixel', label: 'Pixel' },
+  ],
+  autres: [
+    { id: 'maintenance', label: 'Maintenance' },
+    { id: 'refonte', label: 'Refonte' },
+    { id: 'autres', label: 'Autres' },
   ],
 };

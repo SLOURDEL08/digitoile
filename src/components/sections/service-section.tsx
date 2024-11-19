@@ -1,13 +1,14 @@
 // src/components/sections/services-section.tsx
 'use client'
 
+import Link from "next/link";
 import { IconArrow } from "../ui/icons";
 import Typography from "../ui/typography";
 
 const services = [
-  { id: 1, name: 'Développement' },
-  { id: 2, name: 'Design' },
-  { id: 3, name: 'Marketing' }
+  { id: 1, name: 'Développement', link: '/developpement' },
+  { id: 2, name: 'Design', link: '/design'  },
+  { id: 3, name: 'Marketing', link: '/marketing'  }
 ];
 
 const categories = [
@@ -16,9 +17,9 @@ const categories = [
   { id: 3, name: 'Marketing' }
 ];
 
-function ServiceItem({ name }: { name: string }) {
+function ServiceItem({ name, link }: { name: string, link: string }) {
   return (
-    <div className="border-gray/10 hover:text-gray transition-all duration-1000 flex group items-center justify-between first:border-t border-b py-8 max-md:px-4 max-md:py-4 px-10">
+    <div className="border-gray/10 center-gradient hover:text-gray transition-all duration-1000 flex group items-center justify-between first:border-t border-b py-8 max-md:px-4 max-md:py-4 px-10">
       <span className="transition-all duration-1000 text-5xl max-md:text-4xl max-xs:text-3xl group-hover:text-gray text-gray/60">{name}</span>
       
       {/* Vidéo au survol */}
@@ -36,9 +37,10 @@ function ServiceItem({ name }: { name: string }) {
       </div>
       
       {/* Icône */}
-      <div className='group-hover:bg-primary max-sm:p-3 max-xs:p-2.5 p-4'>         
+      <Link
+      href={link} className='group-hover:bg-primary max-sm:p-3 max-xs:p-2.5 p-4'>         
         <IconArrow variant='gray' className="w-12 max-sm:w-8 max-sm:h-8 max-xs:w-6 max-xs:h-6 h-12"/>      
-      </div>
+      </Link>
     </div>
   );
 }
@@ -79,6 +81,7 @@ export default function ServicesSection() {
           <ServiceItem 
             key={service.id}
             name={service.name}
+            link={service.link}
           />
         ))}
       </div>

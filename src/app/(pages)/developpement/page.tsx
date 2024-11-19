@@ -100,18 +100,18 @@ export default function Developpement() {
           </div>
         </div>
 
-        <div className="relative -mx-10">
-          <InfiniteScroll
-            words={words}
-            className="text-4xl max-md:text-3xl mt-14 italic font-bold text-secondary"
-          />
-        </div>
+            <div className=" mt-14  -mx-10">
+            <InfiniteScroll
+       words={words}
+       className="text-4xlmax-md:text-3xl italic font-bold text-secondary"
+     />
+</div>
       </Hero>
           
       <LayoutContent className="">
         <WebCollapse/>
         <ThemeViewer />
-        <ProjectGrid />
+        <ProjectGrid limit={6} />
       </LayoutContent>
     </div>
   );

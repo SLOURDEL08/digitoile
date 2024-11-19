@@ -21,9 +21,9 @@ const ContactInfo = () => (
           <PhoneCall className='max-lg:w-8 max-lg:h-8 max-md:w-6 max-md:h-6'/>
           <span className='leading-5'>+33 6 00 00 00 00</span>
         </a>
-        <a href="mailto:contact@example.com" className="flex max-sm:items-center items-center space-x-4 text-[#D5D5D5] hover:text-[#CEF440] transition-colors group">
+        <a href="mailto:contact@digitoile.fr" className="flex max-sm:items-center items-center space-x-4 text-[#D5D5D5] hover:text-[#CEF440] transition-colors group">
         <AtSign className='max-lg:w-8 max-lg:h-8 max-md:w-6 max-md:h-6'/>
-          <span className='leading-5'>contact@example.com</span>
+          <span className='leading-5'>contact@digitoile.fr</span>
         </a>
         <div className="flex max-sm:hidden items-center space-x-4 text-[#D5D5D5]">
        <MapPin className='max-lg:w-8 max-lg:h-8 max-md:w-6 max-md:h-6'/>

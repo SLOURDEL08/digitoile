@@ -3,136 +3,147 @@
 import { motion } from "framer-motion";
 import LayoutContent from "@/components/layout/content";
 import { Hero } from "@/components/ui/hero/hero";
-import { 
-  Palette, PenTool, Layout, Globe 
-} from "lucide-react";
-import React from "react";
+import Typography from "@/components/ui/typography";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import React, { useState } from "react";
 import SliderProject from "@/components/design/slider-project";
 import StepsProcess from "@/components/design/steps-process";
 import UseTechno from "@/components/design/use-techno";
 import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll";
-import { Button } from "@/components/ui/button";
-import Typography from "@/components/ui/typography";
+import { IconArrow } from "@/components/ui/icons";
 
-const services = [
+const accordionItems = [
   {
-    icon: <Layout className="w-6 h-6" />,
-    title: "Maquette Web",
-    description: "Design d'interfaces modernes et intuitives"
+    id: 1,
+    title: "Design System",
+    subtitle: "8 projets · 14 composants",
+    image: "/images/projects/card/lesvanniers.webp",
   },
   {
-    icon: <PenTool className="w-6 h-6" />,
-    title: "Graphisme",
-    description: "Logos et chartes graphiques uniques"
+    id: 2,
+    title: "Motion Design",
+    subtitle: "12 projets · 8 animations",
+    image: "/images/projects/card/patrimoine.webp",
   },
   {
-    icon: <Palette className="w-6 h-6" />,
-    title: "Design UI/UX",
-    description: "Expériences utilisateur optimisées"
+    id: 3,
+    title: "Web Development",
+    subtitle: "15 projets · Full Stack",
+    image: "/images/projects/card/toastcollectif.webp",
   },
   {
-    icon: <Globe className="w-6 h-6" />,
-    title: "Web Design",
-    description: "Sites web créatifs et responsifs"
-  }
+    id: 4,
+    title: "UI/UX Design",
+    subtitle: "20 projets · Mobile & Web",
+    image: "/images/projects/card/rocketschool.webp",
+  },
 ];
 
 const words = [
-  "DÉVELOPPEMENT WEB",
-  "DESIGN UI/UX",
-  "MARKETING DIGITAL",
-  "REFERENCEMENT",
-  "E-COMMERCE",
+  "CRÉATIVITÉ",
+  "INNOVATION",
+  "DESIGN",
+  "EXPERTISE",
+  "PASSION",
 ];
 
 export default function Design() {
-  const fadeInAnimationVariants = {
-    initial: {
-      opacity: 0,
-      y: 0,
-    },
-    animate: (index: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.15 * index,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    }),
-  };
+  const [activeId, setActiveId] = useState(1);
 
   return (
-    <div className="relative isolate">
-      <Hero className="relative">
-        {/* Grille simplifiée */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 transform-gpu bg-[linear-gradient(to_right,#1515162e_1px,transparent_90px),linear-gradient(to_bottom,#1515162e_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className="absolute inset-0 transform-gpu bg-gradient-to-b from-[#CEF440]/80 via-transparent to-[#CEF440]/80" />
-        </div>
-
-        <div className="flex max-lg:flex-col justify-between max-md:gap-10 gap-20 relative z-10">
-          {/* En-tête */}
-          <div className="max-lg:w-full text-left w-[55%] space-y-8 max-md:space-y-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Typography variant="title" className="">
-                Définissions votre identité graphique ensemble
-              </Typography>
-            </motion.div>
-
-            <div className="flex gap-8 max-md:flex-wrap max-md:gap-6 pt-4">
-              <Button size="lg">Prendre RDV</Button>
-              <Button size="lg" variant="outline">CONTACT</Button>
-            </div>
-          </div>
-
-          {/* Grille des services avec animation séquentielle */}
-          <div className="grid max-lg:max-w-full max-w-md grid-cols-2 gap-6">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                variants={fadeInAnimationVariants}
-                initial="initial"
-                animate="animate"
-                custom={index}
-                className="relative group p-6 max-md:p-4 rounded-2xl border border-[#151516]/10 bg-secondary/70 hover:bg-secondary/10 transition-all duration-300"
-              >
-                <div className="relative z-10">
-                  <div className="mb-4 p-3 rounded-xl bg-white/10 w-fit group-hover:bg-white/20 transition-all">
-                    {React.cloneElement(service.icon, { 
-                      className: "text-white/90 transition-all group-hover:scale-105" 
-                    })}
-                  </div>
-
-                  <h3 className="text-lg leading-6 font-semibold text-white/90 mb-2 group-hover:text-white transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-white/80 text-sm font-[500] group-hover:text-white transition-colors">
-                    {service.description}
+    <div className="relative isolate overflow-visible">
+      <Hero className="relative overflow-visible">
+        <section className="relative w-full">
+          <div className="">
+            <div className="flex flex-col lg:flex-row gap-10 h-full">
+              {/* Left Content */}
+              <div className="flex-1 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="space-y-8"
+                >
+                  <Typography variant="title" className="-mb-4">
+                    Des créations
+                    <br /> 
+                    sur-mesure
+                  </Typography>
+                  <p className="text-secondary/60 text-xl  font-[600]">
+                    Transformons vos idées en expériences digitales uniques et mémorables, Transformons vos idées en expériences digitales uniques et mémorables ransformons vos idées en expériences digitales uniques et mémorables.
                   </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+                  <Button 
+                    
+                  >
+                    Démarrer un projet
+                    <IconArrow/>
+                  </Button>
+                </motion.div>
+              </div>
 
-        <div className="relative -mx-10 z-10">
-          <InfiniteScroll
-            words={words}
-            className="text-4xl max-md:text-3xl mt-14 italic font-bold text-secondary"
-          />
-        </div>
+              {/* Right Accordion */}
+              <div className="flex-1">
+                <motion.div 
+                  className="flex gap-5 h-[400px]"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  {accordionItems.map((item) => (
+                    <motion.div
+                      key={item.id}
+                      className={`relative overflow-hidden cursor-pointer transition-all duration-500
+                                ${activeId === item.id ? 'flex-[0.8]  rounded-3xl ' : 'flex-[0.2] grayscale  rounded-2xl '}
+                                hover:flex-[0.8] group`}
+                      onClick={() => setActiveId(item.id)}
+                      style={{
+                        backgroundImage: `url(${item.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                      }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/10 to-secondary" />
+                      
+                      <div className={`absolute bottom-6 left-6 text-white transition-all duration-300
+                                    ${activeId === item.id || 'group-hover:opacity-100' ? 'opacity-100' : 'opacity-0'}`}>
+                        <div className={`
+                        ${activeId === item.id  ? 'opacity-100 transition-opacity duration-1000' : 'opacity-0'}`}>
+                           <h3 className="text-2xl text-gray uppercase font-semibold mb-2">
+                          {item.title}
+                        </h3>
+                        <span className="text-sm font-[600] anim-gray-bg px-3 py-1.5 rounded-full text-gray/80">
+                          {item.subtitle}
+                        </span>
+                        </div>
+                   
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+            </div>
+
+           <div className=" mt-14  -mx-10">
+            <InfiniteScroll
+       words={words}
+       className="text-4xlmax-md:text-3xl italic font-bold text-secondary"
+     />
+</div>
+          </div>
+        </section>
       </Hero>
 
+      {/* Content Sections */}
       <LayoutContent>
-        <SliderProject/>
-        <StepsProcess/>
-        <UseTechno/>
+
+            <SliderProject />
+
+
+            <StepsProcess />
+
+
+            <UseTechno />
       </LayoutContent>
     </div>
   );

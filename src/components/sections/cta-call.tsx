@@ -9,14 +9,12 @@ export default function CTACall() {
     <div className="bg-gray/20 max-xs:p-6 max-lg:p-14 max-md:p-8 anim-gray-bg transition-all max-md:text-left duration-500 group/container text-center p-20 flex flex-col max-md:gap-4 gap-6">
       <Typography 
         variant="subtitle" 
-        className="w-4/5 font-[800] max-md:mx-0 max-md:w-full !leading-[1.15] mx-auto text-gray max-xs:text-3xl"
+        className=" font-[800] max-md:mx-0 max-md:w-full !leading-[1.15] mx-auto text-gray max-xs:text-3xl"
       >
         Besoin de conseils pour booster votre business ?
       </Typography>
       
-      <p className="text-2xl font-[500] max-xs:hidden max-md:text-xl max-xs:text-base  text-gray">
-        Réservez un créneau pour vous faire rappeler et démarrer le processus.
-      </p>
+     
       
       <Button 
         variant="outline" 

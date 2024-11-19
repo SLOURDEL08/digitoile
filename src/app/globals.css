@@ -106,7 +106,11 @@ input{
         background-size: 400% 400%;
     animation: Gradient 25s ease infinite;
  }
-
+.anim-dark-bg {
+      background: linear-gradient(45deg, #15151660, #15151620, #15151660, #15151620, #15151660, #15151620);
+        background-size: 400% 400%;
+    animation: Gradient 25s ease infinite;
+ }
   .anim-black-bg {
       background: linear-gradient(90deg, #15151605, #15151620, #15151605, #15151620, #15151605, #15151620);
         background-size: 400% 400%;
@@ -159,6 +163,15 @@ input{
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
+
+  html {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
 }
 
 .smart-title {
@@ -169,3 +182,15 @@ input{
 
 
 
+
+.center-gradient{
+  background: transparent;
+}
+.center-gradient:hover{
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.05) 10.08%, rgba(255, 255, 255, 0.05) 89.27%, rgba(255, 255, 255, 0.00) 100%) ;
+}
+
+.center-gradient-collapse{
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.05) 10.08%, rgba(255, 255, 255, 0.05) 89.27%, rgba(255, 255, 255, 0.00) 100%) ;
+
+}

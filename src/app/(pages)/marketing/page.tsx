@@ -25,19 +25,19 @@ export default function Marketing() {
   return (
     <>
       <Hero className='relative'>
-        <div className='absolute bottom-0 left-0 bg-gradient-to-t from-black/40 to-transparent w-full h-80'/>
+        <div className='absolute bottom-0 left-0 bg-gradient-to-t z-[2] from-black/40 to-transparent w-full h-80 max-md:h-20'/>
         <Image 
           src='/images/projects/marketing.png' 
           width={800} 
           height={800} 
           alt='' 
-          className='w-full object-cover -mb-10 object-top h-[700px]' 
+          className='w-full object-contain -mb-10 max-md:-mt-8 object-top h-auto max-md:scale-110 z-[1]' 
         />
       </Hero>
 
       <InfiniteScroll
         words={words}
-        className="text-4xl text-primary max-md:text-3xl mt-14 italic font-bold"
+        className="text-4xl text-primary max-md:text-3xl mt-14 max-md:mt-10 italic font-bold"
       />
 
       <LayoutContent>

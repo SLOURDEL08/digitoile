@@ -51,7 +51,7 @@ export default function ThemeViewer() {
     <div className="w-full relative ">
       <div className="flex max-lg:flex-col max-md:gap-14 !z-[50] gap-20">
         {/* Colonne de gauche: Sélection et info */}
-        <div ref={leftColumnRef} className="space-y-8 max-lg:w-full w-1/2">
+        <div ref={leftColumnRef} className="space-y-8 max-lg:w-full w-3/5">
           <div>
             <Typography className="mb-4   text-gray" variant="title">
               Choisissez votre thème
@@ -70,7 +70,7 @@ export default function ThemeViewer() {
         </div>
 
         {/* Colonne de droite: Prévisualisation */}
-        <div className="relative max-md:h-[400px]  max-lg:w-full w-1/2">
+        <div className="relative max-md:h-[400px]  max-lg:w-full w-2/5">
           {/* Background décalé */}
           <div 
             className="absolute max-md:!h-[400px]  top-0 right-0 w-[96%] rounded-t-[100px] gradient-bg" 

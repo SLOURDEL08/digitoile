@@ -77,7 +77,7 @@ export default function Navigation() {
   
   return (
     <>
-      <header className="relative h-24 my-auto bg-primary py-6">
+      <header className="relative h-24 max-md:h-[5.5rem] my-auto bg-primary py-6">
         <div className="max-w-[1800px] max-sm:px-6 mx-auto px-8">
           <div className="flex items-center justify-between">
             <Link href="/" className="text-5xl max-md:text-4xl">
@@ -108,7 +108,7 @@ export default function Navigation() {
 
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="lg:hidden w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:bg-[#CEF440] transition-colors group"
+              className="lg:hidden w-8 h-8 rounded-full bg-secondary flex items-center justify-center hover:bg-[#CEF440] transition-colors group"
             >
               <Menu className="w-5 h-5 text-[#CEF440] group-hover:text-secondary" />
             </button>
