@@ -1,6 +1,5 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-import { clashDisplay } from '../components/fonts'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,26 +20,40 @@ export default function RootLayout({
       <head>
          <link
     rel="preload"
-    href="/fonts/ClashDisplay-Regular.otf"
+    href="/fonts/ClashDisplay-Extralight.otf"
     as="font"
     type="font/otf"
     crossOrigin="anonymous"
         />
-          <link
-    rel="preload"
-    href="/fonts/ClashDisplay-Bold.otf"
-    as="font"
-    type="font/otf"
-    crossOrigin="anonymous"
-        />
-            <link
+         <link
     rel="preload"
     href="/fonts/ClashDisplay-Light.otf"
     as="font"
     type="font/otf"
     crossOrigin="anonymous"
         />
-            <link
+          <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Medium.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+  />
+  <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Regular.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+        />
+        <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Bold.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+        />
+        <link
     rel="preload"
     href="/fonts/ClashDisplay-Semibold.otf"
     as="font"
@@ -48,7 +61,7 @@ export default function RootLayout({
     crossOrigin="anonymous"
   />
       </head>
-      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-cd font-CD-medium font-CD-regular font-CD-light font-light font-sans ${clashDisplay.variable} antialiased`} suppressHydrationWarning>
+      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-cd font-CD-medium font-CD-regular font-CD-light font-light antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>

@@ -46,8 +46,12 @@
   font-style: normal;
   font-display: swap;
 }
-
-
+body{
+  font-family: 'ClashDisplay'!important;
+}
+html{
+  font-family: 'ClashDisplay'!important;
+}
 .font-cd{
     font-family: 'ClashDisplay';
 
