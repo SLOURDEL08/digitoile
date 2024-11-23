@@ -1,5 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
+import { clashDisplay } from '../components/fonts'
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,7 +18,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-cd font-CD-medium font-CD-regular font-CD-light font-light font-sans antialiased`} suppressHydrationWarning>
+      <head>
+         <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Regular.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+        />
+          <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Bold.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+        />
+            <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Light.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+        />
+            <link
+    rel="preload"
+    href="/fonts/ClashDisplay-Semibold.otf"
+    as="font"
+    type="font/otf"
+    crossOrigin="anonymous"
+  />
+      </head>
+      <body className={`font-CD-bold font-CD-semibold font-CD-extralight font-cd font-CD-medium font-CD-regular font-CD-light font-light font-sans ${clashDisplay.variable} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>

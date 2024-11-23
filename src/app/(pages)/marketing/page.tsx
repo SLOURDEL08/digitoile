@@ -103,7 +103,7 @@ export default function Marketing() {
               ))}
             </div>
 
-            <div className="col-span-2  overflow-scroll border-y bg-gray/5 border-gray/10 max-md:p-8 p-12 max-lg:h-auto h-[412px] transition-colors group relative overflow-hidden">
+            <div className="col-span-2 scrollbar-hide  overflow-scroll border-y bg-gray/5 border-gray/10 max-md:p-8 p-12 max-lg:h-auto h-[412px] transition-colors group relative overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeService}

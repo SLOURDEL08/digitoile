@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex gap-24 max-md:gap-14 uppercase text-lg flex-col text-primary/60 py-20 justify-center items-center">
-        <span className="text-6xl text-white font-bold">DIGITOILE</span>
+        <span className="text-6xl text-primary font-bold">DIGITOILE</span>
         <div className="flex max-md:flex-wrap max-md:items-center max-md:justify-center max-md:text-center max-md:gap-10 justify-around w-full px-20">
                  <span className=" hover:text-primary">/confidentialité</span>
         <span className=" hover:text-primary">@2023 LADIGITOILE Tous droits réservés</span>

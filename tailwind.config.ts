@@ -8,8 +8,8 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        sans: ['var(--clashdisplay)'],
+     fontFamily: {
+        'cd': ['var(--font-clash-display)'],
       },
       colors: {
         primary: '#CEF440',

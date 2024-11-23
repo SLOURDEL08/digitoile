@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // Définition des variants du bouton
 const buttonVariants = cva(
   // Classe de base commune à tous les variants
-  "rounded-full group font-[600]  border-2 !leading-[1] flex gap-2.5 text-xl max-md:text-base justify-center items-center uppercase",
+  "rounded-full group font-[600]  border-2 !leading-[1] flex gap-2.5 text-xl max-md:text-base font-cd justify-center items-center uppercase",
   {
     variants: {
       variant: {
