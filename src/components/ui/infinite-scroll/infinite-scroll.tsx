@@ -4,12 +4,15 @@ import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
+type Variant = 'default' | 'primary';
+
 interface InfiniteScrollProps {
   words: string[];
   className?: string;
   direction?: 'left' | 'right';
   speed?: 'slow' | 'normal' | 'fast';
   gap?: number;
+  variant?: Variant;
   pauseOnHover?: boolean;
   separatorSize?: {
     width?: number;
@@ -23,6 +26,7 @@ export const InfiniteScroll = ({
   direction = 'left',
   speed = 'slow',
   gap = 20,
+  variant = 'default',
   pauseOnHover = false,
   separatorSize = {
     width: 35,
@@ -39,6 +43,9 @@ export const InfiniteScroll = ({
     width: separatorSize.width || 35,
     height: separatorSize.height || 35,
   };
+
+  // Définir l'image de l'étoile en fonction du variant
+  const starImage = variant === 'primary' ? '/images/star-primary.webp' : '/images/star.webp';
 
   // Référence pour obtenir la largeur du conteneur
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -89,7 +96,7 @@ export const InfiniteScroll = ({
             <span className="whitespace-nowrap font-[800]">{word}</span>
             <div className="flex-shrink-0">
               <Image 
-                src="/images/star.webp"
+                src={starImage}
                 alt="separator"
                 width={separatorStyle.width}
                 height={separatorStyle.height}

@@ -23,10 +23,10 @@ export default function ProjectGrid({ limit }: ProjectGridProps) {
     <div>
       <div className="flex w-full overflow-hidden max-lg:flex-col gap-8 max-md:gap-4 justify-between">
         <div className="space-y-4 max-xs:space-y-6">
-          <Typography className="text-gray" variant="title">
+          <Typography className="text-gray order-3" variant="title">
             Nos projets<b className="text-primary">.</b>
           </Typography>
-          <div className="flex flex-wrap gap-4 max-md:text-sm items-center">
+          <div className="flex order-1 flex-wrap gap-4 max-md:text-sm items-center">
             <button
               onClick={() => setSelectedCategory(null)}
               className={`px-4  z-10  py-1.5 border font-[500] rounded-full transition-all duration-500
@@ -52,8 +52,8 @@ export default function ProjectGrid({ limit }: ProjectGridProps) {
         </div>
 
         <div className="w-1/3 max-lg:w-full">
-          <span className="text-gray/50 font-[500] leading-9 text-xl">
-            Retrouvez nos projets web, nos créations graphiques et bien plus..
+          <span className="text-gray/50 font-[500] max-md:text-lg leading-9 text-xl">
+            Découvrez nos projets web, créations graphiques et bien plus encore..
           </span>
           <Button 
             variant="ghost" 
@@ -71,7 +71,7 @@ export default function ProjectGrid({ limit }: ProjectGridProps) {
         </div>
       </div>
 
-      <div className="grid mt-14 gap-10 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
+      <div className="grid mt-14 max-md:mt-10 max-md:gap-8 gap-10 grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
         {displayedProjects.map((project) => (
           <ProjectCard
             key={project.id}

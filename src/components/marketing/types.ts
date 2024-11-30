@@ -7,8 +7,6 @@ export interface Platform {
 
 interface Highlight {
   title: string;
-  metric: string;
-  trend: number;
   icon: LucideIcon;
 }
 

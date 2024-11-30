@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 import { Hero } from '@/components/ui/hero/hero';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from 'next/image';
 import LayoutContent from '@/components/layout/content';
 import { InfiniteScroll } from '@/components/ui/infinite-scroll/infinite-scroll';
 import { services } from '@/components/marketing/data';
+import MockupMacbook from "@/components/marketing/MockupMacbook";
 
 
 export default function Marketing() {
@@ -25,18 +25,16 @@ export default function Marketing() {
   return (
     <>
       <Hero className='relative'>
-        <div className='absolute bottom-0 left-0 bg-gradient-to-t z-[2] from-black/40 to-transparent w-full h-80 max-md:h-20'/>
-        <Image 
-          src='/images/projects/marketing.png' 
-          width={800} 
-          height={800} 
-          alt='' 
-          className='w-full object-contain -mb-10 max-md:-mt-8 object-top h-auto max-md:scale-110 z-[1]' 
-        />
+        <div className='-mb-16'>
+            <MockupMacbook />
+        </div>
+            
+
       </Hero>
 
       <InfiniteScroll
         words={words}
+        variant='primary'
         className="text-4xl text-primary max-md:text-3xl mt-14 max-md:mt-10 italic font-bold"
       />
 
@@ -76,7 +74,7 @@ export default function Marketing() {
                     </div>
                     <div className="flex-1 max-lg:hidden">
                       <h4 className={`
-                        text-xl font-bold mb-1.5 transition-colors duration-300
+                        text-xl leading-6 font-bold mb-1 transition-colors duration-300
                         ${activeService === service.id 
                           ? 'text-gray' 
                           : 'text-gray/20 group-hover:text-gray'
@@ -85,10 +83,10 @@ export default function Marketing() {
                         {service.title}
                       </h4>
                       <p className={`
-                        text-sm transition-colors duration-300
+                        text-sm font-[600] transition-colors duration-300
                         ${activeService === service.id 
                           ? 'text-gray/60' 
-                          : 'text-gray/20 font-[500] group-hover:text-gray/80'
+                          : 'text-gray/20  group-hover:text-gray/80'
                         }
                       `}>
                         {service.shortDescription}
@@ -113,22 +111,22 @@ export default function Marketing() {
                   transition={{ duration: 0.3 }}
                   className="space-y-8"
                 >
-                  <div className='flex  justify-between max-lg:gap-12 max-md:gap-6 gap-20'>
+                  <div className='flex max-md:flex-col  justify-between max-lg:gap-12 max-md:gap-6 gap-20'>
                     <div>
                       <div className="flex  mb-4 items-center gap-4">
                         <div>
-                          <h3 className="text-3xl font-bold text-gray">
+                          <h3 className="text-3xl max-md:text-2xl font-bold text-gray">
                             {activeContent.title}
                           </h3>
                         </div>
                       </div>
-                      <p className="text-gray/60 font-[500] text-lg">
+                      <p className="text-gray/60 font-[500] max-md:text-base text-lg">
                         {activeContent.fullDescription}
                       </p>
                     </div>
 
                     <div className=''>
-                      <div className="grid grid-cols-2 max-md:grid-cols-1 w-max gap-2">
+                      <div className="grid grid-cols-2 max-md:flex max-md:gap-4 w-max gap-2">
                         {activeContent.platforms.map((platform, index) => (
                           <motion.div
                             key={platform.name}
@@ -146,30 +144,25 @@ export default function Marketing() {
                     </div>
                   </div>
                         
-           <div className="flex max-md:flex-col gap-6 mb-8">
+           <div className="flex max-md:flex-col max-md:gap-4 gap-6 mb-8">
   {activeContent.highlights.map((highlight, index) => (
     <motion.div
       key={index}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="relative py-3 w-max px-4 max-md:w-full rounded-2xl overflow-hidden group cursor-pointer flex-1 border border-white/5 transform hover:-translate-y-1 transition-all duration-300 bg-transparent"
+      className="relative py-3 max-md:max-w-full  max-w-[180px] px-4 max-md:w-full rounded-2xl overflow-hidden group cursor-pointer flex-1 border border-white/5 transform hover:-translate-y-1 transition-all duration-300 bg-transparent"
     >
       <div className="relative z-10">
-        <div className="flex items-center gap-3">
+        <div className="flex max-md:gap-4 items-center gap-3">
           <div className="p-2 rounded-lg bg-gray/10">
             <highlight.icon className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="text-gray font-semibold">
+            <h4 className="text-gray leading-4 max-md:text-lg text-sm font-semibold">
               {highlight.title}
             </h4>
-            <p className="text-gray/60">
-              {highlight.metric}
-              <span className="text-green-500 ml-2 text-sm">
-                +{highlight.trend}%
-              </span>
-            </p>
+
           </div>
         </div>
       </div>

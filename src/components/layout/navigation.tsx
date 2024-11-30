@@ -10,6 +10,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 // Supprimez Contact de navigationItems pour le menu desktop
 const navigationItems = [
+    { name: 'Accueil', href: '/' },
   { name: 'Développement', href: '/developpement' },
   { name: 'Design', href: '/design' },
   { name: 'Marketing', href: '/marketing' },
@@ -18,6 +19,7 @@ const navigationItems = [
 
 // Créez un array séparé pour le menu mobile qui inclut Contact
 const mobileNavigationItems = [
+  { name: 'Home', href: '/' },
   { name: 'Développement', href: '/developpement' },
   { name: 'Design', href: '/design' },
   { name: 'Marketing', href: '/marketing' },
@@ -42,19 +44,19 @@ export default function Navigation() {
           </button>
         </div>
         
-        <nav className="flex-1 flex flex-col gap-4 p-10 max-md:p-8">
+        <nav className="flex-1 flex flex-col gap-6 p-10 max-sm:p-6 max-md:p-8">
           {mobileNavigationItems.map((item, index) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setIsMobileMenuOpen(false)}
               className={cn(
-                "relative group py-4 px-6 border border-[#CEF440]/10 text-5xl max-sm:text-2xl font-bold uppercase transition-all duration-300",
+                "relative group py-4 px-6 border border-gray/10 text-5xl max-xs:text-2xl max-md:text-3xl max-lg:text-4xl font-bold uppercase transition-all duration-300",
                 index === mobileNavigationItems.length - 1
                   ? "bg-primary text-secondary rounded-full"
                   : pathname === item.href 
                     ? "bg-[#CEF440]/10 text-[#CEF440]" 
-                    : "text-[#D5D5D5] hover:bg-[#CEF440]/5 hover:text-[#CEF440] hover:border-[#CEF440]/20"
+                    : "text-[#D5D5D5] hover:bg-[#CEF440]/5 hover:text-[#CEF440] hover:border-primary/20"
               )}
             >
               <span className="relative z-10">{item.name}</span>
@@ -85,23 +87,43 @@ export default function Navigation() {
             </Link>
 
             <nav className="hidden lg:flex items-center space-x-10">
-              {navigationItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    'text-lg font-[600] hover:text-primary',
-                    pathname === item.href ? 'text-black' : 'text-muted-foreground'
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              
+           {navigationItems.map((item) => (
+  <Link
+    key={item.href}
+    href={item.href}
+    className={cn(
+      'text-lg relative group font-[600] flex items-center transition-all',
+      pathname === item.href ? 'text-black' : 'text-muted-foreground'
+    )}
+  >
+    {/* Texte avec <b> uniquement sur la page active */}
+    <span className={cn(
+      "transition-all duration-300",
+      pathname === item.href ? "mr-0" : "group-hover:mr-2"
+    )}>
+      {item.name}
+      {pathname === item.href && (
+        <b className="font-bold text-2xl !leading-none text-secondary/50">.</b>
+      )}
+    </span>
+
+    {/* Icône avec transition d'opacité et déplacement à droite, mais invisible sur la page active */}
+    {pathname !== item.href && (
+      <IconArrow
+        className="text-secondary absolute -right-3 bottom-2 transition-all duration-300 opacity-0 group-hover:opacity-100 scale-x-[1px] group-hover:translate-x-6"
+      />
+    )}
+  </Link>
+))}
+
+
+
+
               <Link href="/contact">
-                <Button variant="outline">
+                <Button className='' variant="outline">
+                  
                   Contact
-                  <IconArrow className='brightness-0 group-hover:brightness-[1]' />
+                  <IconArrow className='text-secondary group-hover:text-primary -mt-0.5' />
                 </Button>
               </Link>
             </nav>

@@ -11,6 +11,7 @@ import { useRef, useEffect, useState } from "react"
 export default function ThemeViewer() {
   const {
     currentTheme,
+    currentSubTheme,
     isLoading,
     isPlaying,
     showScrollTop,
@@ -19,8 +20,9 @@ export default function ThemeViewer() {
     scrollToTop,
     togglePlay,
     handleThemeChange,
+    handleSubThemeChange,
     handleImageLoad
-  } = useThemeViewer(themes[0]);
+  } = useThemeViewer(themes[0], themes[0].subThemes[0]);
 
   const leftColumnRef = useRef<HTMLDivElement>(null);
   const [columnHeight, setColumnHeight] = useState<number>(0);
@@ -33,10 +35,8 @@ export default function ThemeViewer() {
       }
     };
 
-    // Mise à jour initiale
     updateHeight();
-
-    // Observer les changements de taille
+    
     const resizeObserver = new ResizeObserver(updateHeight);
     if (leftColumnRef.current) {
       resizeObserver.observe(leftColumnRef.current);
@@ -48,36 +48,33 @@ export default function ThemeViewer() {
   }, []);
 
   return (
-    <div className="w-full relative ">
+    <div className="w-full relative">
       <div className="flex max-lg:flex-col max-md:gap-14 !z-[50] gap-20">
-        {/* Colonne de gauche: Sélection et info */}
         <div ref={leftColumnRef} className="space-y-8 max-lg:w-full w-3/5">
           <div>
-            <Typography className="mb-4   text-gray" variant="title">
-              Choisissez votre thème
+            <Typography className="mb-4 text-gray" variant="title">
+              Choisissez<br />votre thème
               <span className="text-primary">.</span>
             </Typography>
-            <p className="text-gray/50 font-[500] leading-9 text-xl">
-              Des designs modernes et adaptés à vos besoins
-            </p>
+            <p className="text-gray/50 font-[500] max-md:text-lg leading-9 text-xl">
+              {"Créez un thème sur-mesure selon vos besoins et démarquez-vous avec une apparence unique adaptée à votre activité."}           </p>
           </div>
 
           <ThemeSelector
             themes={themes}
             currentTheme={currentTheme}
+            currentSubTheme={currentSubTheme}
             onThemeChange={handleThemeChange}
+            onSubThemeChange={handleSubThemeChange}
           />
         </div>
 
-        {/* Colonne de droite: Prévisualisation */}
-        <div className="relative max-md:h-[400px]  max-lg:w-full w-2/5">
-          {/* Background décalé */}
+        <div className="relative max-md:h-[400px] max-lg:w-full w-2/5">
           <div 
-            className="absolute max-md:!h-[400px]  top-0 right-0 w-[96%] rounded-t-[100px] gradient-bg" 
+            className="absolute max-md:!h-[400px] top-0 right-0 w-[96%] rounded-t-[100px] gradient-bg" 
             style={{ height: `${columnHeight}px` }}
           />
           
-          {/* Conteneur principal */}
           <div 
             className="relative max-md:!h-[400px] mr-4 rounded-t-[90px] overflow-hidden"
             style={{ height: `${columnHeight}px` }}
@@ -100,7 +97,7 @@ export default function ThemeViewer() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent h-20 z-10" />
                 <Image
-                  src={currentTheme.image}
+                  src={currentSubTheme.image}
                   alt={currentTheme.label}
                   width={1000}
                   height={2000}
@@ -122,8 +119,7 @@ export default function ThemeViewer() {
           </div>
         </div>
       </div>
-            <div className="absolute z-[1] -top-20 -left-96 w-[1200px] h-[1200px] rounded-full bg-primary opacity-[0.02] blur-3xl" />
-
+      <div className="absolute z-[1] -top-20 -left-96 w-[1200px] h-[1200px] rounded-full bg-primary opacity-[0.02] blur-3xl" />
     </div>
   )
 }

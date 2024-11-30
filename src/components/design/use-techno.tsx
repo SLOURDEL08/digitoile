@@ -4,135 +4,137 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 import Typography from "../ui/typography";
+import { cn } from "@/lib/utils";
 
 interface Technology {
-  icon: string;  // Change type to string since it's a path
+  icon: string;
   label: string;
-  isImage: boolean;
   description: string;
-  category: string;
+  category: string[];
 }
 
-const technologies = [
+const technologies: Technology[] = [
   { 
     icon: '/images/figma.png',
     label: 'Figma',
-    isImage: true,
     description: "Figma est notre outil principal pour la conception d'interfaces. Il nous permet de créer des designs collaboratifs et responsifs.",
-    category: "Design UI/UX"
+    category: ["Design UI/UX", "de"]
   },
   { 
     icon: '/images/photoshop.png',
     label: 'Photoshop',
-    isImage: true,
     description: "Adobe XD nous aide à créer des prototypes interactifs et à définir des systèmes de design cohérents.",
-    category: "Prototypage"
+    category: ["Prototypage"]
   },
   { 
     icon: '/images/illustrator.png',
     label: 'Sketch',
-    isImage: true,
     description: "Sketch est utilisé pour créer des interfaces précises et des composants réutilisables.",
-    category: "Design System"
+    category: ["Design System"]
   },
   { 
     icon: '/images/pinterest.png',
     label: 'React',
-    isImage: true,
     description: "React nous permet de développer des interfaces utilisateur dynamiques et performantes.",
-    category: "Développement"
+    category: ["Développement"]
   },
   { 
     icon: '/images/figma.png',
     label: 'Next.js',
-    isImage: true,
     description: "Next.js est notre framework de choix pour créer des applications web modernes et optimisées.",
-    category: "Framework"
+    category: ["Framework"]
   },
   { 
     icon: '/images/illustrator.png',
     label: 'Tailwind',
-    isImage: true,
     description: "Tailwind nous permet de styliser rapidement nos interfaces tout en maintenant une cohérence visuelle.",
-    category: "Styling"
+    category: ["Styling"]
   }
 ];
+
+const TechnologyCard = ({ tech, isActive, onClick }: { 
+  tech: Technology; 
+  isActive: boolean; 
+  onClick: () => void;
+}) => (
+  <motion.div
+    onClick={onClick}
+    className={cn(
+      "cursor-pointer relative p-4  border  transition-all duration-300",
+      "hover:bg-gray/5 hover:border-gray/20",
+      isActive ? "anim-graylight-bg border-gray/20" : "border-gray/10"
+    )}
+  >
+    <div className="flex flex-col items-center gap-2">
+      <div className="relative w-14 h-14 flex items-center justify-center">
+        <Image
+          src={tech.icon}
+          alt={tech.label}
+          fill
+          className="object-contain p-2"
+          sizes="56px"
+        />
+      </div>
+      <span className={cn(
+        "text-base font-medium text-center transition-colors",
+        isActive ? "text-gray" : "text-gray/60"
+      )}>
+        {tech.label}
+      </span>
+    </div>
+  </motion.div>
+);
 
 export default function UseTechno() {
   const [activeTech, setActiveTech] = useState<Technology>(technologies[0]);
 
   return (
     <section className="">
-      <div className="">
-        <div className="flex max-lg:flex-col max-lg:gap-10 gap-20">
-          {/* Contenu descriptif */}
+      <div className="flex flex-col-reverse lg:flex-row gap-12 lg:gap-20">
+        {/* Description */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="w-full lg:w-4/6 space-y-6"
+        >
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            className="space-y-6 max-lg:w-3/5 w-2/3"
+            key={activeTech.label}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="space-y-6"
           >
-            <Typography 
-              variant="title"
-              key={activeTech.label}
-              className="text-gray"
-            >
+            <div className="flex gap-8 items-center">
+            <Typography variant="title" className="text-gray -mb-1">
               {activeTech.label}<b className="text-primary">.</b>
             </Typography>
-            <motion.p 
-              key={activeTech.description}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-gray/70 font-[500] text-xl max-w-xl leading-relaxed"
-            >
+                        <div className="inline-block px-5 py-2 border border-gray/20 rounded-full">
+              <span className="text-sm text-gray/60 font-medium">
+                {activeTech.category}
+              </span>
+              </div>
+              </div>
+            
+            <p className="text-lg text-gray/70 w-4/5 font-medium leading-relaxed">
               {activeTech.description}
-            </motion.p>
-          </motion.div>
+            </p>
 
-          {/* Grille des technologies */}
+          </motion.div>
+        </motion.div>
+
+        {/* Technologies Grid */}
+        <div className="w-full lg:w-2/6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="grid max-lg:flex max-lg:w-full max-lg:gap-8 max-lg:justify-between w-1/3 grid-cols-3 gap-4"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-4"
           >
-            {technologies.map((item, index) => (
-              <motion.div
-                key={index}
-                onClick={() => setActiveTech(item)}
-                className={`group relative cursor-pointer ${
-                  activeTech.label === item.label ? 'z-10' : ''
-                }`}
-              >
-                {/* Fond avec bordure qui s'efface */}
-                <div className={`absolute inset-0 bg-gradient-to-br from-white/5 to-transparent transition-opacity duration-500 ${
-                  activeTech.label === item.label ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                }`} />
-                
-                {/* Card principale */}
-                <div className={`relative w-full p-6 py-5 flex flex-col items-center justify-center gap-4 backdrop-blur-sm border transition-all duration-500 ${
-                  activeTech.label === item.label 
-                    ? 'border-gray/60 bg-gray/10 text-gray' 
-                    : 'border-white/10 hover:border-gray/60 group-hover:bg-gray/10 group-hover:text-gray'
-                }`}>
-                  {/* Image */}
-                  <div className="relative max-lg:h-10 max-lg:w-10 h-12 w-12 flex items-center justify-center">
-                    <Image
-                      src={item.icon}
-                      alt={item.label}
-                      fill
-                      className="object-contain transition-transform duration-300"
-                      sizes="(max-width: 48px) 100vw, 48px"
-                    />
-                  </div>
-                  
-                  <span className={`text-base font-[500] text-center transition-colors ${
-                    activeTech.label === item.label 
-                      ? 'text-gray' 
-                      : 'text-white/60 group-hover:text-gray'
-                  }`}>
-                    {item.label}
-                  </span>
-                </div>
-              </motion.div>
+            {technologies.map((tech) => (
+              <TechnologyCard
+                key={tech.label}
+                tech={tech}
+                isActive={activeTech.label === tech.label}
+                onClick={() => setActiveTech(tech)}
+              />
             ))}
           </motion.div>
         </div>

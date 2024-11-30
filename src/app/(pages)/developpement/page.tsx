@@ -100,7 +100,7 @@ export default function Developpement() {
           </div>
         </div>
 
-            <div className=" mt-14  -mx-10">
+            <div className=" mt-14 max-md:mt-10 -mx-10">
             <InfiniteScroll
        words={words}
        className="text-4xlmax-md:text-3xl italic font-bold text-secondary"

@@ -50,12 +50,12 @@ export default function ServicesSection() {
     <div className="">
       {/* En-tête */}
       <div className="flex max-lg:flex-col max-md:gap-6 gap-8 w-full justify-between ">
-        <div>
+        <div className="w-2/3 max-lg:w-full">
           <Typography variant="title" className="text-gray mb-2 max-md:mb-4">
             NOS SERVICES<b className="text-primary">.</b>
           </Typography>
-          <span className="text-gray/50 font-[500] leading-9 text-xl">
-            Retrouvez nos projets web, nos créations graphiques et bien plus..
+          <span className="text-gray/50  font-[500] leading-9 text-xl max-md:text-lg">
+            Simplifiez votre projet avec nos solutions sur mesure : développement web, design et marketing, tout-en-un, pour un résultat optimal.
           </span>
         </div>
         

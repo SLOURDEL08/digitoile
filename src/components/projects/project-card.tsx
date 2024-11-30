@@ -52,15 +52,15 @@ export function ProjectCard({ title, image }: ProjectCardProps) {
   }, [isMobile]);
 
   // Classes dynamiques basées sur l'état actif (mobile) ou hover (desktop)
-  const imageClasses = `w-full h-full object-cover transition-all duration-300 ease-in-out 
-    ${isMobile && isActive ? 'grayscale-0 rounded-br-[45px]' : 'grayscale'}
+  const imageClasses = `w-full h-full object-cover transition-all  duration-300 ease-in-out 
+    ${isMobile && isActive ? 'grayscale-0 rounded-br-[45px] border border-gray/20 ' : 'grayscale '}
     ${!isMobile ? 'group-hover:grayscale-0 group-hover:rounded-br-[45px]' : ''}`;
 
   const overlayClasses = `w-full flex p-6 items-end h-full inset-0 
     transition-all duration-500 ease-in-out
     bg-gradient-to-t from-secondary/90 to-transparent 
     z-20 absolute
-    ${isMobile && isActive ? 'opacity-100' : 'opacity-0'}
+    ${isMobile && isActive ? 'opacity-100 shadow-white' : 'opacity-0'}
     ${!isMobile ? 'group-hover:opacity-100' : ''}`;
 
   return (
@@ -76,8 +76,8 @@ export function ProjectCard({ title, image }: ProjectCardProps) {
       <div className={overlayClasses}>
         <span className="text-4xl text-gray leading-9 font-[600]">{title}</span>
         
-        <a href="#" className="bg-primary group/a  p-4 absolute right-0 top-0">
-          <IconArrow className="text-secondary w-10 h-10 !translate-x-[1]  group-hover/a:!-translate-x-[0]"/>
+        <a href="#" className="bg-primary group/a  p-3 absolute right-0 top-0">
+          <IconArrow className="text-secondary w-8 h-8 !scale-y-1"/>
         </a>
       </div>
     </div>

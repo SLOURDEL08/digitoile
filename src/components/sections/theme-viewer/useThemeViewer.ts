@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Theme } from "./types";
+import { Theme, SubTheme } from "./types";
 
-export const useThemeViewer = (initialTheme: Theme) => {
+export const useThemeViewer = (initialTheme: Theme, initialSubTheme: SubTheme) => {
   const [currentTheme, setCurrentTheme] = useState<Theme>(initialTheme);
+  const [currentSubTheme, setCurrentSubTheme] = useState<SubTheme>(initialSubTheme);
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -98,6 +99,16 @@ export const useThemeViewer = (initialTheme: Theme) => {
     setIsPlaying(false);
     setIsLoading(true);
     setCurrentTheme(theme);
+    setCurrentSubTheme(theme.subThemes[0]);
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  };
+
+  const handleSubThemeChange = (subTheme: SubTheme) => {
+    setIsPlaying(false);
+    setIsLoading(true);
+    setCurrentSubTheme(subTheme);
     if (containerRef.current) {
       containerRef.current.scrollTop = 0;
     }
@@ -109,6 +120,7 @@ export const useThemeViewer = (initialTheme: Theme) => {
 
   return {
     currentTheme,
+    currentSubTheme,
     isLoading,
     isPlaying,
     showScrollTop,
@@ -117,6 +129,7 @@ export const useThemeViewer = (initialTheme: Theme) => {
     scrollToTop,
     togglePlay,
     handleThemeChange,
+    handleSubThemeChange,
     handleImageLoad
   };
 };

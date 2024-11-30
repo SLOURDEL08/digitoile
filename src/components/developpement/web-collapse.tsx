@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { 
-  Clock
+  Clock,
+  ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { IconArrow } from '../ui/icons';
@@ -71,16 +72,16 @@ export default function WebCollapse() {
                   {/* Description et Prix */}
                   <div className="flex justify-between items-start max-lg:flex-col gap-8 mb-8">
                     <div className="space-y-8 flex-1 max-w-3xl">
-                      <p className="text-gray/80 text-xl font-[600] leading-8">{service.description}</p>
+                      <p className="text-gray/80 text-xl max-md:text-lg font-[500] leading-8">{service.description}</p>
                       
                       {/* Benefits */}
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid grid-cols-3 gap-4 max-sm:grid-cols-1">
                         {service.benefits.map((benefit, index) => {
                           const BenefitIcon = benefit.icon;
                           return (
                             <div 
                               key={index} 
-                              className="border text-center text-lg leading-6 border-primary/5 p-4 py-6 text-gray/60 font-[500] flex flex-col justify-center items-center gap-3"
+                              className="border max-sm:text-left max-xs:flex-col max-sm:flex-row max-md:justify-start text-center text-base leading-5 border-gray/10 p-6 py-6 text-gray/80 font-[500] flex flex-col justify-center max-sm:items-center max-xs:items-start items-center gap-3"
                             >
                               <BenefitIcon className="min-w-8 min-h-8 text-gray" />
                               {benefit.text}
@@ -89,43 +90,68 @@ export default function WebCollapse() {
                         })}
                       </div>
 
-                      {/* Plugins */}
-                      <div className='space-y-2'>
-                        <h4 className="text-gray/60 font-medium uppercase text-sm tracking-wider">Plugins inclus</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {service.plugins
-                            .filter(plugin => plugin.included)
-                            .map((plugin, index) => {
-                              const PluginIcon = plugin.icon;
-                              return (
-                                <div key={index} className="bg-gray/5 max-w-xs w-max hover:bg-gray/10 pointer-events-auto p-4 flex items-center gap-4">
-                                  <div className="bg-primary/10 p-2">
-                                    <PluginIcon className="w-5 h-5 text-primary" />
-                                  </div>
-                                  <div>
-                                    <p className="text-gray/80 font-medium">{plugin.name}</p>
-                                    <p className="text-sm text-gray/60">{plugin.description}</p>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                      </div>
+                      {/* Plugins - Updated Section */}
+                  <div className='space-y-2'>
+  <h4 className="text-gray/60 font-medium uppercase text-sm tracking-wider">Extensions premium</h4>
+  <div className="flex flex-wrap gap-2">
+    {/* Plugins inclus */}
+    {service.plugins.map((plugin, index) => {
+      const PluginIcon = plugin.icon;
+      return (
+        <div 
+          key={index} 
+          className="bg-gray/5 max-w-xs max-sm:w-full max-sm:max-w-full w-max hover:bg-gray/10 pointer-events-auto p-4 flex items-center gap-4"
+        >
+          <div className={cn(
+            "p-2",
+            plugin.included ? "bg-primary/10" : "bg-gray/10"
+          )}>
+            <PluginIcon className={cn(
+              "w-5 h-5",
+              plugin.included ? "text-primary" : "text-gray"
+            )} />
+          </div>
+          <div>
+            <p className="text-gray/80 font-semibold">{plugin.name}</p>
+            <p className="text-sm font-[500] text-gray/60">{plugin.description}</p>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
                     </div>
 
-<div className="space-y-6 min-w-[380px] max-w-[400px]">
-                      {/* Prix et Délai */}
-                      <div className='flex gap-10 anim-gray-bg items-start w-full rounded-xl p-6 px-8'>
-                        <div className="">
-                          <p className="text-sm text-secondary/80 uppercase tracking-wider mb-1">À partir de</p>
-                          <p className="text-4xl text-gray font-[800]">{service.price}</p>
-                        </div>
-                        <div className="">
-                          <p className="text-sm uppercase text-secondary tracking-wider mb-2">Délai</p>
-                          <div className="flex items-center gap-3">
-                            <Clock className="w-6 h-6 text-gray" />
-                            <p className="text-xl text-gray">{service.delay}</p>
+                    <div className="space-y-6 max-lg:w-full max-lg:min-w-full max-lg:max-w-0 min-w-[380px] max-w-[400px]">
+                      {/* Prix et Délai Améliorés */}
+                      <div className='anim-gray-bg max-lg:w-max max-md:w-full  rounded-xl relative overflow-hidden'>
+                        <div className="flex max-xs:flex-col max-sm:gap-6 max-lg:gap-10 gap-6 p-8">
+                          {/* Prix */}
+                          <div className="space-y-1">
+                            <p className="text-sm text-gray/50 font-medium uppercase tracking-wider">À partir de</p>
+                            <div className="flex items-baseline gap-2">
+                              <p className="text-4xl leading-7 max-md:text-4xl font-extrabold bg-gradient-to-r from-gray to-gray/80 bg-clip-text text-transparent">
+                                {service.price}
+                              </p>
+                              <span className="text-gray/60 font-medium">TTC</span>
+                            </div>
                           </div>
+
+                          {/* Délai */}
+                          <div className="space-y-1">
+                            <p className="text-sm uppercase text-gray/50 font-medium tracking-wider">Délai estimé</p>
+                            <div className="flex items-center gap-4">
+                              <div className="p-2 rounded-lg bg-secondary/10">
+                                <Clock className="w-6 h-6 max-md:w-5 max-md:h-5 text-gray" />
+                              </div>
+                              <p className="text-xl max-md:text-base max-md:leading-4 leading-5 font-bold text-gray">{service.delay}</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        {/* Effet de fond */}
+                        <div className="absolute -z-10 top-0 left-0 w-full h-full">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-1/2 bg-primary/20 blur-3xl rounded-full" />
                         </div>
                       </div>
 
@@ -135,7 +161,7 @@ export default function WebCollapse() {
                         <div className='text-lg space-y-1'>
                           {service.features.map((feature, index) => (
                             <div key={index} className='flex gap-4 group/feature items-center text-gray/60 border-y hover:bg-gray/10 bg-gray/5 border-gray/5 py-2 px-4'>
-                              <IconArrow className="group-hover/feature:opacity-100 group-hover/feature:text-primary  min-w-4 min-h-3 text-gray opacity-60" /> 
+                              <IconArrow className="group-hover/feature:opacity-100 group-hover/feature:text-primary min-w-4 min-h-3 text-gray opacity-60" /> 
                               <span className="text-base font-[600] group-hover/feature:text-gray">{feature}</span>
                             </div>
                           ))}
@@ -159,7 +185,6 @@ export default function WebCollapse() {
                                     style={{ color: tech.iconColor }}
                                   />
                                 </div>
-                               
                               </div>
                             );
                           })}
@@ -167,8 +192,6 @@ export default function WebCollapse() {
                       </div>
                     </div>
                   </div>
-
-
 
                   {/* Footer */}
                   <div className="mt-12 pt-8 border-t border-gray/10 flex items-center justify-between">
@@ -179,13 +202,11 @@ export default function WebCollapse() {
                       <Button 
                         className="bg-transparent border-gray/20 border text-gray/60 hover:bg-primary/90 font-[600]"
                       >
-                        
                         découvrir nos thèmes
                       </Button>
                       <Button 
                         className="bg-primary text-secondary hover:bg-primary/90 font-[600]"
                       >
-                        
                         réaliser un devis
                         <IconArrow className='text-secondary'/>
                       </Button>

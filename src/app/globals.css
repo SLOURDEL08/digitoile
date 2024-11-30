@@ -46,6 +46,21 @@
   font-style: normal;
   font-display: swap;
 }
+:root {
+  --tw-color-primary: #CEF440; /* Définir la couleur primaire */
+}
+
+
+
+.bg-radial-primary {
+  background: radial-gradient(circle, #CEF44040, transparent);
+  opacity: 0.3; /* Ajuste l'opacité selon tes besoins */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 body{
   font-family: 'ClashDisplay'!important;
 }
@@ -110,6 +125,12 @@ input{
         background-size: 400% 400%;
     animation: Gradient 25s ease infinite;
  }
+
+  .anim-graylight-bg {
+      background: linear-gradient(45deg, #D5D5D540, #D5D5D510, #D5D5D540, #D5D5D510, #D5D5D540, #D5D5D520);
+        background-size: 400% 400%;
+    animation: Gradient 25s ease infinite;
+ }
 .anim-dark-bg {
       background: linear-gradient(45deg, #15151660, #15151620, #15151660, #15151620, #15151660, #15151620);
         background-size: 400% 400%;
@@ -119,6 +140,10 @@ input{
       background: linear-gradient(90deg, #15151605, #15151620, #15151605, #15151620, #15151605, #15151620);
         background-size: 400% 400%;
     animation: Gradient 10s ease infinite;
+ }
+
+ .shadow-white{
+  box-shadow: 0px 0px 40px 0px #ffffff;
  }
 
 @keyframes Gradient {

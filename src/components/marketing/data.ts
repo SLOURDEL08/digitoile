@@ -34,20 +34,17 @@ export const services: Service[] = [
     highlights: [
       {
         title: "Taux de conversion",
-        metric: "3.2",
-        trend: 23,
+
         icon: Target
       },
       {
         title: "Visiteurs uniques",
-        metric: "2.4k",
-        trend: 12,
+
         icon: Users
       },
       {
         title: "Revenu moyen",
-        metric: "840€",
-        trend: 18,
+
         icon: LineChart
       }
     ],
@@ -75,20 +72,17 @@ export const services: Service[] = [
     highlights: [
       {
         title: "Taux de conversion",
-        metric: "3.2",
-        trend: 23,
+
         icon: Target
       },
       {
         title: "Visiteurs uniques",
-        metric: "2.4k",
-        trend: 12,
+
         icon: Users
       },
       {
         title: "Revenu moyen",
-        metric: "840€",
-        trend: 18,
+
         icon: LineChart
       }
     ],
@@ -116,20 +110,17 @@ export const services: Service[] = [
     highlights: [
       {
         title: "Taux de conversion",
-        metric: "3.2",
-        trend: 23,
+
         icon: Target
       },
       {
         title: "Visiteurs uniques",
-        metric: "2.4k",
-        trend: 12,
+
         icon: Users
       },
       {
         title: "Revenu moyen",
-        metric: "840€",
-        trend: 18,
+
         icon: LineChart
       }
     ],
@@ -157,20 +148,17 @@ export const services: Service[] = [
     highlights: [
       {
         title: "Taux de conversion",
-        metric: "3.2",
-        trend: 23,
+
         icon: Target
       },
       {
         title: "Visiteurs uniques",
-        metric: "2.4k",
-        trend: 12,
+
         icon: Users
       },
       {
         title: "Revenu moyen",
-        metric: "840€",
-        trend: 18,
+
         icon: LineChart
       }
     ],
@@ -198,20 +186,17 @@ export const services: Service[] = [
     highlights: [
       {
         title: "Taux de conversion",
-        metric: "3.2",
-        trend: 23,
+
         icon: Target
       },
       {
         title: "Visiteurs uniques",
-        metric: "2.4k",
-        trend: 12,
+
         icon: Users
       },
       {
         title: "Revenu moyen",
-        metric: "840€",
-        trend: 18,
+
         icon: LineChart
       }
     ],
