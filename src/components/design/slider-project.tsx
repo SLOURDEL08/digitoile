@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Typography from "../ui/typography";
 import { IconArrow } from "../ui/icons";
 
 type Project = {

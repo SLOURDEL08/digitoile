@@ -1,21 +1,16 @@
 // EcommercePage.tsx
 'use client';
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { Calendar, ChevronDown, ShoppingBag, DollarSign, Box, AlertCircle, Package, Star, ShoppingCart, Clock, TrendingUp, Mail, Bell } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { XAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
+import { Calendar, ChevronDown, ShoppingBag, DollarSign, Box, Package, Clock, TrendingUp} from 'lucide-react';
+import { useState } from 'react';
 import Image from 'next/image';
 import NotificationCarousel from '../NotificationCarousel';
 import OrdersSection from '../OrderSection';
 import AutomationSection from '../AutomationMetric';
 
 const EcommercePage = () => {
-  const [timeRange, setTimeRange] = useState('7 derniers jours');
-  const [notifications, setNotifications] = useState([
-    { type: 'sale', message: 'Nouvelle commande de Jean D. - 156.99€', time: '2 min' },
-    { type: 'alert', message: 'Stock faible : "T-Shirt Premium" (5 restants)', time: '15 min' },
-    { type: 'review', message: 'Nouvel avis 5★ de Marie L.', time: '1h' }
-  ]);
+  const [timeRange] = useState('7 derniers jours');
 
   const metrics = [
     { 
@@ -127,7 +122,7 @@ const EcommercePage = () => {
                     <option>Ce mois</option>
                     <option>Cette année</option>
                   </select>
-                  <span className="text-xs  text-white px-2 py-1 bg-blue-600 rounded-full font-semibold cursor-pointer whitespace-nowrap">
+                  <span className="text-xs text-white px-2 py-1 bg-blue-600 rounded-full font-semibold cursor-pointer whitespace-nowrap">
                     Voir tout
                   </span>
                 </div>
@@ -201,7 +196,7 @@ const EcommercePage = () => {
                   <Clock className="w-4 h-4" />
                   Paniers abandonnés
                 </h3>
-                <span className="text-xs text-blue-600  font-semibold cursor-pointer">Voir tout</span>
+                <span className="text-xs text-blue-600 font-semibold cursor-pointer">Voir tout</span>
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between bg-orange-50 p-3 rounded-lg flex-wrap gap-2">

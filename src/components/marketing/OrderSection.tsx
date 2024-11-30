@@ -26,7 +26,6 @@ const generateCustomerName = (): string => {
 const OrdersSection: React.FC = () => {
   const [orders, setOrders] = useState<Order[]>(recentOrders);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [newOrder, setNewOrder] = useState<Order | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,12 +39,10 @@ const OrdersSection: React.FC = () => {
       };
 
       setIsAnimating(true);
-      setNewOrder(mockNewOrder);
       setOrders(prev => [mockNewOrder, ...prev.slice(0, 3)]);
 
       setTimeout(() => {
         setIsAnimating(false);
-        setNewOrder(null);
       }, 2000);
 
     }, 5000);
@@ -55,6 +52,7 @@ const OrdersSection: React.FC = () => {
 
   return (
     <div className="w-full">
+      {/* Le reste du JSX reste identique */}
       <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         <h3 className="text-sm sm:text-base font-[600] flex items-center gap-2">
           <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />

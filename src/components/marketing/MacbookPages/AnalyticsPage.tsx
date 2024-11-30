@@ -1,7 +1,7 @@
 'use client';
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
-import { Calendar, ChevronDown, Users, TrendingUp, DollarSign, ArrowUp, ArrowDown, ShoppingCart } from 'lucide-react';
+import { Calendar, ChevronDown, Users, TrendingUp, DollarSign, ShoppingCart } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -29,8 +29,7 @@ interface MarketingNotification {
 }
 
 const AnalyticsPage = () => {
-  const [timeRange, setTimeRange] = useState('7 derniers jours');
-  const [currentMetric, setCurrentMetric] = useState(0);
+  const [timeRange] = useState('7 derniers jours');
   const [currentNotificationIndex, setCurrentNotificationIndex] = useState(0);
 
   const metrics: Metric[] = [
@@ -88,17 +87,10 @@ const AnalyticsPage = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentMetric((prev) => (prev + 1) % metrics.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
       setCurrentNotificationIndex((prev) => (prev + 1) % marketingNotifications.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [marketingNotifications.length]);
 
   return (
     <div className="max-h-full min-h-[90vh] p-4">
@@ -116,8 +108,7 @@ const AnalyticsPage = () => {
               <ChevronDown className="w-3 h-3" />
             </button>
           </div>
-          
-          {/* Sources de trafic */}
+    {/* Sources de trafic */}
           <div className="p-3 sm:p-4 bg-white rounded-lg h-auto sm:h-44 pb-6 sm:pb-8">
             <h3 className="text-xs sm:text-sm font-semibold mb-1">Sources de Trafic</h3>
             <div className="h-32 sm:h-full">
@@ -153,69 +144,69 @@ const AnalyticsPage = () => {
           
           {/* Widget notifications marketing */}
           <div className="p-3 sm:p-4 bg-white rounded-lg relative">
+            <div className="relative h-[180px] overflow-hidden bg-gray-50 rounded-lg">
+              {marketingNotifications.map((notification, index) => (
+                <div
+                  key={index}
+                  className={`absolute w-full h-full transition-all duration-500 ease-in-out transform ${
+                    index === currentNotificationIndex 
+                      ? 'translate-x-0 opacity-100' 
+                      : index < currentNotificationIndex
+                        ? '-translate-x-full opacity-0'
+                        : 'translate-x-full opacity-0'
+                  }`}
+                >
+                  <div className="h-full p-4">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-2 rounded-lg bg-${notification.metrics[0].color}-100`}>
+                        <notification.icon className={`w-6 h-6 text-${notification.metrics[0].color}-600`} />
+                      </div>
+                      <h4 className="text-base font-bold">{notification.title}</h4>
+                    </div>
 
-
-  <div className="relative h-[180px] overflow-hidden bg-gray-50 rounded-lg">
-    {marketingNotifications.map((notification, index) => (
-      <div
-        key={index}
-        className={`absolute w-full h-full transition-all duration-500 ease-in-out transform ${
-          index === currentNotificationIndex 
-            ? 'translate-x-0 opacity-100' 
-            : index < currentNotificationIndex
-              ? '-translate-x-full opacity-0'
-              : 'translate-x-full opacity-0'
-        }`}
-      >
-        <div className="h-full">
-          <div className="flex items-center gap-3 mb-4">
-            <div className={`p-2  rounded-lg bg-${notification.metrics[0].color}-100`}>
-              <notification.icon className={`w-6 h-6 text-${notification.metrics[0].color}-600`} />
+                    <div className="flex w-max gap-4">
+                      {notification.metrics.map((metric, idx) => (
+                        <div 
+                          key={idx} 
+                          className="flex gap-2 items-center justify-between p-2 border border-gray/40 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-xs text-gray-600">
+                              {metric.source || metric.label}
+                            </span>
+                            <span className="text-sm font-bold">
+                              {metric.value}
+                            </span>
+                          </div>
+                          <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                            metric.trend.startsWith('+') 
+                              ? 'bg-green-50 text-green-600' 
+                              : 'bg-red-50 text-red-600'
+                          }`}>
+                            {metric.trend}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h4 className="text-base font-bold">{notification.title}</h4>
-          </div>
 
-          <div className="flex w-max gap-4">
-            {notification.metrics.map((metric, idx) => (
-              <div 
-                key={idx} 
-                className="flex gap-2 items-center justify-between p-2  border border-gray/40 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-600">
-                    {metric.source || metric.label}
-                  </span>
-                  <span className="text-sm font-bold">
-                    {metric.value}
-                  </span>
-                </div>
-                <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                  metric.trend.startsWith('+') 
-                    ? 'bg-green-50 text-green-600' 
-                    : 'bg-red-50 text-red-600'
-                }`}>
-                  {metric.trend}
-                </div>
-              </div>
-            ))}
+            {/* Indicateurs de progression */}
+            <div className="flex justify-center gap-1 mt-4">
+              {marketingNotifications.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1 rounded-full transition-all duration-300 ${
+                    idx === currentNotificationIndex 
+                      ? 'w-8 bg-blue-600' 
+                      : 'w-2 bg-gray-200'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  {/* Légende des transitions */}
-  <div className="flex justify-center items-center gap-4 mt-3 text-xs text-gray-500">
-    <div className="flex items-center gap-1">
-      <ArrowUp className="w-3 h-3 text-green-500" />
-      <span>Hausse</span>
-    </div>
-    <div className="flex items-center gap-1">
-      <ArrowDown className="w-3 h-3 text-red-500" />
-      <span>Baisse</span>
-    </div>
-  </div>
-</div>
         </div>
 
         {/* Colonne droite */}

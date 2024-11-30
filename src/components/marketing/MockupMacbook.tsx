@@ -43,7 +43,10 @@ const MockupMacbook = () => {
               {tabs.map((tab, index) => (
                 <div
                   key={index}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => {
+                    setActiveTab(index);
+                    setUrl(tab.url);
+                  }}
                   className={`
                     group px-2.5 py-2 rounded-lg font-[600] text-xs flex items-center gap-2 cursor-pointer transition-all
                     ${activeTab === index 
@@ -53,19 +56,19 @@ const MockupMacbook = () => {
                 >
                   <span>{tab.favicon}</span>
                   <span>{tab.title}</span>
-                  <X className="w-3 h-3  group-hover:opacity-100 text-white hover:scale-110" />
+                  <X className="w-3 h-3 group-hover:opacity-100 text-white hover:scale-110" />
                 </div>
               ))}
             </div>
 
             {/* Barre d'URL */}
-            <div className="h-10 bg-[#e8e8e8] flex items-center px-3  !py-6 gap-3">
+            <div className="h-10 bg-[#e8e8e8] flex items-center px-3 !py-6 gap-3">
               <div className="flex-1">
                 <div className="bg-white rounded-lg h-7 flex items-center px-3 gap-2 group focus-within:ring-1 focus-within:ring-blue-500">
                   <Search className="w-3.5 h-3.5 text-secondary group-focus-within:text-white" />
                   <input 
                     type="text"
-                    value={tabs[activeTab].url}
+                    value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     className="text-xs w-full font-[600] bg-transparent text-secondary focus:outline-none"
                   />

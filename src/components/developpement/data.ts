@@ -20,7 +20,6 @@ import {
   SiStripe,
   SiPaypal,
   SiPhp,
-  SiGooglecalendar,
   SiReact,
   SiNextdotjs,
   SiVuedotjs,

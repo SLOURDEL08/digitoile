@@ -2,8 +2,7 @@
 
 import { useState } from 'react';
 import { 
-  Clock,
-  ChevronRight
+  Clock
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { IconArrow } from '../ui/icons';
