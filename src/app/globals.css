@@ -50,6 +50,12 @@
   --tw-color-primary: #CEF440; /* Définir la couleur primaire */
 }
 
+@layer base {
+  html {
+    font-family: 'ClashDisplay', system-ui, sans-serif;
+    font-weight: 500; /* Poids par défaut */
+  }
+}
 
 
 .bg-radial-primary {

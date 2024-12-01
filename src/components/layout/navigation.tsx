@@ -56,7 +56,7 @@ export default function Navigation() {
                   ? "bg-primary text-secondary rounded-full"
                   : pathname === item.href 
                     ? "bg-[#CEF440]/10 text-[#CEF440]" 
-                    : "text-[#D5D5D5] hover:bg-[#CEF440]/5 hover:text-[#CEF440] hover:border-primary/20"
+                    : "text-[#D5D5D5] hover:bg-[#CEF440]/5 hover:text-[#CEF440] hover:border-gray/20"
               )}
             >
               <span className="relative z-10">{item.name}</span>
