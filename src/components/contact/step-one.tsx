@@ -164,7 +164,7 @@ export default function StepOne({ formData, handleServiceChange }: StepOneProps)
       >
         <div className="space-y-4 mb-10">
           <motion.h3 
-            className="text-6xl max-xl:text-5xl max-xs:text-4xl uppercase leading-[1.1] text-gray font-bold"
+            className="text-6xl max-xl:text-5xl max-xs:text-4xl uppercase font-cd leading-[1.1] text-gray font-bold"
             variants={itemVariants}
           >
             Travaillons ensemble<b className='text-primary'>.</b>
