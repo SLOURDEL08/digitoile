@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { IconArrow } from '../ui/icons';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
+import Image from 'next/image';
 
 // Supprimez Contact de navigationItems pour le menu desktop
 const navigationItems = [
@@ -82,8 +83,9 @@ export default function Navigation() {
       <header className="relative h-24 max-md:h-[5.5rem] my-auto bg-primary py-6">
         <div className="max-w-[1800px] max-sm:px-6 mx-auto px-8">
           <div className="flex items-center justify-between">
-            <Link href="/" className="text-5xl max-md:text-4xl">
+            <Link href="/" className="tracking-tight  flex items-center gap-4  font-[800] text-5xl max-md:text-4xl">
               DIGITOILE
+              <Image src='/images/star.webp' alt='ddede' width={30} height={20} className='slow-spin' />
             </Link>
 
             <nav className="hidden lg:flex items-center space-x-10">

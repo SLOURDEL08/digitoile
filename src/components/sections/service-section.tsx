@@ -6,9 +6,9 @@ import { IconArrow } from "../ui/icons";
 import Typography from "../ui/typography";
 
 const services = [
-  { id: 1, name: 'Développement', link: '/developpement' },
-  { id: 2, name: 'Design', link: '/design'  },
-  { id: 3, name: 'Marketing', link: '/marketing'  }
+  { id: 1, name: 'Développement', link: '/developpement', video: "/video/dev.mp4" },
+  { id: 2, name: 'Design', link: '/design', video: "/video/design.mp4"   },
+  { id: 3, name: 'Marketing', link: '/marketing', video: "/video/marketing.mp4"   }
 ];
 
 const categories = [
@@ -17,7 +17,7 @@ const categories = [
   { id: 3, name: 'Marketing' }
 ];
 
-function ServiceItem({ name, link }: { name: string, link: string }) {
+function ServiceItem({ name, link, video }: { name: string, link: string, video: string }) {
   return (
     <div className="border-gray/10 center-gradient hover:text-gray transition-all duration-1000 flex group items-center justify-between first:border-t border-b py-8 max-md:px-4 max-md:py-4 px-10">
       <span className="transition-all duration-1000 text-5xl max-md:text-4xl max-xs:text-3xl group-hover:text-gray text-gray/60">{name}</span>
@@ -31,7 +31,7 @@ function ServiceItem({ name, link }: { name: string, link: string }) {
           loop
           playsInline
         >
-          <source src="/video/hero-home.mp4" type="video/mp4" />
+          <source src={video} type="video/mp4" />
         </video>
         <div className="w-56 rounded-t-[60px] absolute top-3 ml-3 z-[1] h-56 gradient-bg" />
       </div>
@@ -82,6 +82,7 @@ export default function ServicesSection() {
             key={service.id}
             name={service.name}
             link={service.link}
+            video={service.video}
           />
         ))}
       </div>

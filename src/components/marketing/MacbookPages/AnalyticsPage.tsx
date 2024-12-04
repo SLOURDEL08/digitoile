@@ -109,7 +109,7 @@ const AnalyticsPage = () => {
             </button>
           </div>
     {/* Sources de trafic */}
-          <div className="p-3 sm:p-4 bg-white rounded-lg h-auto sm:h-44 pb-6 sm:pb-8">
+          <div className="p-3 sm:p-4 bg-white rounded-lg h-auto sm:h-44 max-md:pb-0 pb-6 sm:pb-8">
             <h3 className="text-xs sm:text-sm font-semibold mb-1">Sources de Trafic</h3>
             <div className="h-32 sm:h-full">
               <ResponsiveContainer width="100%" height="100%" className="text-[10px]">
@@ -144,7 +144,7 @@ const AnalyticsPage = () => {
           
           {/* Widget notifications marketing */}
           <div className="p-3 sm:p-4 bg-white rounded-lg relative">
-            <div className="relative h-[180px] overflow-hidden bg-gray-50 rounded-lg">
+            <div className="relative h-[180px] max-md:h-24 overflow-hidden bg-gray-50 rounded-lg">
               {marketingNotifications.map((notification, index) => (
                 <div
                   key={index}
@@ -156,10 +156,10 @@ const AnalyticsPage = () => {
                         : 'translate-x-full opacity-0'
                   }`}
                 >
-                  <div className="h-full p-4">
+                  <div className="h-full">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className={`p-2 rounded-lg bg-${notification.metrics[0].color}-100`}>
-                        <notification.icon className={`w-6 h-6 text-${notification.metrics[0].color}-600`} />
+                      <div className={`p-2 max-md:p-1.5 rounded-lg bg-${notification.metrics[0].color}-100`}>
+                        <notification.icon className={`w-6 max-md:w-3 max-md:h-3 h-6 text-${notification.metrics[0].color}-600`} />
                       </div>
                       <h4 className="text-base font-bold">{notification.title}</h4>
                     </div>

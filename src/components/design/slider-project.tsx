@@ -1,5 +1,3 @@
-'use client'
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -17,37 +15,34 @@ type Project = {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Les Vanniers Paris",
+    title: "DIGITALIZERR  ",
     category: "Design UI/UX",
     description: "Une expérience unique de navigation et d'achat pour une marque de luxe parisienne.",
     images: [
-      "/images/design/moodboard.jpg",
-      "/images/design/moodboard2.jpg",
-      "/images/design/moodboard3.jpg",
+      "/images/design/digitali.png",
+      "/images/design/digitali2.png",
     ],
     clientName: "E-commerce • Luxe"
   },
   {
     id: 2,
-    title: "Paul Savine",
-    category: "Application Mobile",
+    title: "Rocket School",
+    category: "Landing Page",
     description: "Interface mobile intuitive pour la gestion de patrimoine nouvelle génération.",
     images: [
-      "/images/projects/themes/couvreur2.png",
-      "/images/projects/themes/couvreur1.png",
-      "/images/projects/themes/couvreur3.png",
+      "/images/design/rockett.png",
+      "/images/design/rockett2.png",
     ],
     clientName: "Finance • Tech"
   },
   {
     id: 3,
-    title: "Rocket School",
+    title: "DietIA - Webapp",
     category: "Plateforme Web",
     description: "Plateforme éducative innovante avec un dashboard analytique personnalisé.",
     images: [
-      "/images/projects/themes/couvreur3.png",
-      "/images/projects/themes/couvreur2.png",
-      "/images/projects/themes/couvreur1.png",
+      "/images/design/dietiad.png",
+      "/images/design/dietia2.png",
     ],
     clientName: "Education • SaaS"
   }
@@ -133,47 +128,37 @@ const ThumbnailGallery = ({
 );
 
 export default function SliderProject() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const currentProject = projects[currentIndex];
+  const currentProject = projects[currentProjectIndex];
 
-  const handleNext = () => {
+  // Navigation entre les projets
+  const handleNextProject = () => {
     if (isAnimating) return;
-    if (currentImageIndex < currentProject.images.length - 1) {
-      setCurrentImageIndex(prev => prev + 1);
-    } else {
-      setCurrentIndex(prev => (prev + 1) % projects.length);
-      setCurrentImageIndex(0);
-    }
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+    setCurrentImageIndex(0);
   };
 
-  const handlePrev = () => {
+  const handlePrevProject = () => {
     if (isAnimating) return;
-    if (currentImageIndex > 0) {
-      setCurrentImageIndex(prev => prev - 1);
-    } else {
-      const newIndex = (currentIndex - 1 + projects.length) % projects.length;
-      setCurrentIndex(newIndex);
-      setCurrentImageIndex(projects[newIndex].images.length - 1);
-    }
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentImageIndex(0);
   };
 
+  // Défilement automatique des images du projet courant
   useEffect(() => {
     const timer = setInterval(() => {
-      if (currentImageIndex < currentProject.images.length - 1) {
-        setCurrentImageIndex(prev => prev + 1);
-      } else {
-        setCurrentIndex(prev => (prev + 1) % projects.length);
-        setCurrentImageIndex(0);
-      }
+      setCurrentImageIndex((prev) => 
+        (prev + 1) % currentProject.images.length
+      );
     }, 6000);
 
     return () => clearInterval(timer);
-  }, [currentIndex, currentImageIndex, currentProject.images.length]);
+  }, [currentProject]);
 
   return (
-    <section className="relative  !rounded-3xl -mt-8 h-[600px] max-lg:h-[500px] max-md:h-[450px] max-sm:h-[400px] w-full overflow-hidden bg-gray/5">
+    <section className="relative !rounded-3xl -mt-8 h-[600px] max-lg:h-[500px] max-md:h-[450px] max-sm:h-[400px] w-full overflow-hidden bg-gray/5">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1515162e_1px,transparent_1px),linear-gradient(to_bottom,#1515162e_1px,transparent_1px)] bg-[size:24px_24px] !z-20 pointer-events-none opacity-20" />
       
       <div className="relative w-full h-full">
@@ -230,17 +215,15 @@ export default function SliderProject() {
                 <div className="space-y-4 max-w-2xl max-lg:space-y-6">
                   <div className="space-y-4 max-lg:space-y-3">
                     <div className="flex items-center space-x-4">
-   <div className="flex items-center gap-3 flex-wrap">
-                      <span className="px-4 py-1.5 max-lg:py-1 max-lg:px-3 anim-gray-bg backdrop-blur-sm max-md:text-xs rounded-full text-gray/60 text-sm font-medium">
-                        {currentProject.category}
-                      </span>
-
-                    </div>
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className="px-4 py-1.5 max-lg:py-1 max-lg:px-3 anim-gray-bg backdrop-blur-sm max-md:text-xs rounded-full text-gray/60 text-sm font-medium">
+                          {currentProject.category}
+                        </span>
+                      </div>
                     </div>
                     <h2 className="text-6xl max-lg:text-5xl max-md:text-4xl max-sm:text-2xl font-bold text-gray">
                       {currentProject.title}
                     </h2>
-                 
                   </div>
                   <p className="text-xl max-lg:text-lg max-md:text-base text-gray/80 font-medium leading-relaxed max-w-xl max-md:hidden">
                     {currentProject.description}
@@ -248,15 +231,15 @@ export default function SliderProject() {
                 </div>
 
                 {/* Navigation */}
-                <div className=" flex max-lg:justify-between max-md:gap-6 items-end gap-10 max-lg:w-full">
+                <div className="flex max-lg:justify-between max-md:gap-6 items-end gap-10 max-lg:w-full">
                   <div className="flex items-end justify-end max-lg:gap-4 max-lg:justify-between gap-6">
                     <motion.span 
-                      key={currentIndex}
+                      key={currentProjectIndex}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       className="text-7xl max-lg:text-6xl max-lg:mb-1 -mb-2.5 !leading-none max-md:text-5xl max-sm:text-4xl font-bold bg-gradient-to-r from-primary to-primary/60 text-transparent bg-clip-text"
                     >
-                      {String(currentIndex + 1).padStart(2, '0')}
+                      {String(currentProjectIndex + 1).padStart(2, '0')}
                     </motion.span>
                     <div className="text-right max-lg:-space-y-1.5">
                       <span className="block text-gray/40 text-lg max-md:text-base">Projet</span>
@@ -268,13 +251,13 @@ export default function SliderProject() {
 
                   <div className="flex items-center justify-end max-lg:justify-between gap-3">
                     <button 
-                      onClick={handlePrev}
+                      onClick={handlePrevProject}
                       className="p-4 max-md:p-3 hover:bg-primary group rounded-full bg-gray/10 backdrop-blur-sm transition-all duration-300"
                     >
                       <IconArrow className="-scale-x-100 w-6 h-6 max-md:w-5 max-md:h-5 text-gray group-hover:text-secondary" />
                     </button>
                     <button 
-                      onClick={handleNext}
+                      onClick={handleNextProject}
                       className="p-4 max-md:p-3 hover:bg-primary group rounded-full bg-gray/10 backdrop-blur-sm transition-all duration-300"
                     >
                       <IconArrow className="w-6 h-6 max-md:w-5 max-md:h-5 text-gray group-hover:text-secondary" />
