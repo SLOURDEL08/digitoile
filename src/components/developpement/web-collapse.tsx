@@ -22,7 +22,7 @@ export default function WebCollapse() {
   };
 
   return (
-    <div className="w-full mx-auto">
+    <div id='prestations' className="w-full mx-auto">
       {webServices.map((service) => {
         const Icon = service.icon;
         const isOpen = openItem === service.id;

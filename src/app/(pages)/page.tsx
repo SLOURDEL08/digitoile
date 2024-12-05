@@ -12,6 +12,7 @@ import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll"
 import Typography from "@/components/ui/typography";
 import { AtSign } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
@@ -86,8 +87,8 @@ export default function Home() {
   />
 </Typography>
        <div className="flex max-md:gap-6 max-lg:pt-2 gap-8 pt-4">
-         <Button >Prendre RDV<IconArrow/></Button>
-         <Button variant="outline">CONTACT<IconArrow className="text-secondary"/></Button>
+          <Link href='/contact'><Button >Prendre RDV<IconArrow/></Button></Link>
+          <Link href='/contact'><Button variant="outline">CONTACT<IconArrow className="text-secondary"/></Button></Link>
        </div>
      </div>
 

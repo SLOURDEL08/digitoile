@@ -10,6 +10,7 @@ import { IconArrow } from "@/components/ui/icons";
 import Typography from "@/components/ui/typography";
 import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Developpement() {
   const words = [
@@ -74,19 +75,24 @@ export default function Developpement() {
                 </Typography>
 
                 <p className="text-2xl font-[500] max-xs:text-lg max-md:mx-0 max-md:w-full max-md:text-xl w-2/3 mx-auto text-black/70 leading-relaxed">
-                  Des solutions web professionnelles adaptées à vos besoins. 
-                  De la vitrine à le-commerce, nous donnons vie à vos projets digitaux.
+                  Des solutions complétes avec accompagnement du début à la fin du processus de création de votre projet web.
                 </p>
 
                 <div className="flex justify-center flex-wrap max-md:justify-start max-md:gap-4 gap-8">
+                  <Link href='#prestations'>
                   <Button className="">
-                    Nos services
-                    <IconArrow/>
-                  </Button>
+                    Nos prestations
+                    <IconArrow className="-scale-x-[1]"/>
+                    </Button>
+                    </Link>
+                                    <Link href='/projets'>
+
                   <Button variant="outline" className="">
                     Nos projets
                     <IconArrow variant="outline"/>
-                  </Button>
+                    </Button>
+                                        </Link>
+
                 </div>
               </div>
 

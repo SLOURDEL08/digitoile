@@ -7,6 +7,7 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { projects, categories } from "./data";
 import { ProjectGridProps } from "./types";
+import Link from 'next/link';
 
 export default function ProjectGrid({ limit }: ProjectGridProps) {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
@@ -55,6 +56,9 @@ export default function ProjectGrid({ limit }: ProjectGridProps) {
           <span className="text-gray/50 font-[500] max-md:text-lg leading-9 text-xl">
             Découvrez nos projets web, créations graphiques et bien plus encore..
           </span>
+          <Link
+          href='/projets'
+          >
           <Button 
             variant="ghost" 
             className="mt-4 max-md:mt-6 flex group transition-all duration-500 hover:text-gray items-center gap-4 text-gray/50"
@@ -67,7 +71,8 @@ export default function ProjectGrid({ limit }: ProjectGridProps) {
               height={24} 
               className="w-6 transition-all duration-500 group-hover:opacity-95 invert opacity-45" 
             />
-          </Button>
+            </Button>
+            </Link>
         </div>
       </div>
 

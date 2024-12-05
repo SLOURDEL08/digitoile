@@ -1,5 +1,6 @@
 'use client'
 
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrow } from "../ui/icons";
 import Typography from "../ui/typography";
@@ -16,13 +17,18 @@ export default function CTACall() {
       
      
       
+      <Link
+      href='/contact'
+      >
       <Button 
+  
         variant="outline" 
         className="max-md:group-hover/container:scale-100  max-md:group-hover/container:translate-x-1 w-max max-md:mx-0 max-md:mt-1 max-md:text-base max-md:py-2.5 max-md:px-4 max-md:border mx-auto mt-4  text-gray group-hover/container:scale-110 group-hover/container:bg-gray group-hover/container:text-secondary transition-all duration-300 border-gray"
       >
         Cliquez ici
         <IconArrow className="text-gray  transiton-all duration-300 group-hover/container:!text-secondary max-md:w-3 max-md:h-3"/>
-      </Button>
+        </Button>
+        </Link>
     </div>
   );
 }

@@ -3,100 +3,100 @@ import { Utensils, Home, Scale, Stethoscope, ShoppingBag, House } from "lucide-r
 
 export const themes: Theme[] = [
     {
-    id: "couvreur",
-    label: "Couvreur / Zingeur",
-    description: "Entreprise spécialisée dans l'assistance et la rénovation de toiture",
-    type: "vitrine",
-    icon: House,
-    subThemes: [
-      {
-        id: "artisan",
-        image: "/images/projects/themes/couvreur1.png",
-        objective: "Mettre en avant le savoir-faire artisanal et l'aspect traditionnel des services de couverture. Ce thème est conçu pour les artisans qui souhaitent présenter leur travail de manière authentique, en partageant des témoignages clients et en offrant des conseils d'entretien réguliers sur leur blog.",
-        features: [
-          "Portfolio travaux réalisés",
-          "Devis en ligne",
-          "Témoignages clients",
-          "Blog conseils entretien"
-        ]
-      },
-      {
-        id: "enterprise",
-        image: "/images/projects/themes/couvreur2.png",
-        objective: "Offrir une image professionnelle à une entreprise de couverture offrant une gamme de services multiples aux entreprises qui cherchent à démontrer leur expertise dans divers domaines du métier, avec une attention particulière à la présentation de services détaillés et un espace dédié aux professionnels du bâtiment, comme les architectes.",
-        features: [
-          "Catalogue services détaillé",
-          "Simulateur de projet",
-          "Zone intervention interactive",
-          "Espace pro architectes"
-        ]
-      },
-      {
-        id: "expertise",
-        image: "/images/projects/themes/couvreur3.png",
-        objective: "Offrir une image professionnelle à une entreprise de couverture offrant une gamme de services multiples aux entreprises qui cherchent à démontrer leur expertise dans divers domaines du métier, avec une attention particulière à la présentation de services détaillés et un espace dédié aux professionnels du bâtiment, comme les architectes.",
-        features: [
-          "Catalogue services détaillé",
-          "Simulateur de projet",
-          "Zone intervention interactive",
-          "Espace pro architectes"
-        ]
-      }
-    ]
-  },
-  {
-    id: "restaurant",
-    label: "Restaurant & Café",
-    description: "Solution complète pour restaurants et cafés",
-    type: "vitrine",
-    icon: Utensils,
-    subThemes: [
-      {
-        id: "burger",
-        image: "/images/projects/themes/resto4.png",
-        objective: "Ce thème met l'accent sur une interface élégante et minimaliste, idéale pour les restaurants modernes qui souhaitent offrir une expérience raffinée à leurs clients. L'interface fluide et intuitive permet aux utilisateurs de réserver facilement une table, consulter un menu interactif et effectuer des commandes.",
-        features: [
-          "Réservation de tables en ligne",
-          "Menu digital interactif",
-          "Interface avec UberEats/Deliveroo",
-          "Gestion des événements privés"
-        ]
-      },
-      {
-        id: "traditional",
-        image: "/images/projects/themes/resto2.png",
-        objective: "Ce thème est conçu pour capturer l'essence des restaurants classiques, en mettant l'accent sur la saisonnalité des menus et l'histoire du lieu. La galerie photo permet de partager l'ambiance unique de l'établissement, et le blog de recettes aide à créer une communauté autour du restaurant tout en renforçant son image.",
-        features: [
-          "Menu saisonnier dynamique",
-          "Galerie photo ambiance",
-          "Blog recettes et actualités",
-          "Carte des vins interactive"
-        ]
-      },
-      {
-        id: "bistro",
-        image: "/images/projects/themes/resto1.png",
-        objective: "Interface conviviale et dynamique pour les bistros et brasseries permettant aux clients de réserver des tables en ligne, découvrir le menu du jour et s'informer sur les événements spéciaux, tout en ayant la possibilité de recevoir des informations sur les promotions via une newsletter.",
-        features: [
-          "Menu du jour automatisé",
-          "Réservations de groupe",
-          "Galerie événements",
-          "Newsletter promotions"
-        ]
-      },
-        {
-        id: "luxe",
-        image: "/images/projects/themes/resto3.png",
-        objective: "Interface conviviale et dynamique pour les bistros et brasseries permettant aux clients de réserver des tables en ligne, découvrir le menu du jour et s'informer sur les événements spéciaux, tout en ayant la possibilité de recevoir des informations sur les promotions via une newsletter.",
-        features: [
-          "Menu du jour automatisé",
-          "Réservations de groupe",
-          "Galerie événements",
-          "Newsletter promotions"
-        ]
-      }
-    ]
-  },
+  id: "couvreur",
+  label: "Couvreur / Zingeur",
+  description: "Entreprise spécialisée dans l'assistance et la rénovation de toiture",
+  type: "vitrine",
+  icon: House,
+  subThemes: [
+    {
+      id: "artisan",
+      image: "/images/projects/themes/couvreur1.png",
+      objective: "Une vitrine web complète et élégante conçue pour valoriser votre expertise de couvreur. Ce thème met l'accent sur un référencement optimal avec une structure SEO performante, permettant une visibilité accrue sur les moteurs de recherche. L'interface propose un design épuré avec des sections stratégiquement organisées pour guider vos visiteurs vers vos services clés.",
+      features: [
+        "Newsletter",
+        "Blog professionnel",
+        "Structure SEO optimisée",
+        "Pages services détaillées",
+        "Intégration réseaux sociaux",
+        "Responsive"
+      ]
+    },
+    {
+      id: "enterprise",
+      image: "/images/projects/themes/couvreur2.png",
+      objective: "Un thème dynamique orienté conversion, mettant en avant vos réalisations à travers des galeries photos interactives. L'accent est mis sur l'engagement client avec des points de contact stratégiquement placés et une mise en valeur de vos partenariats professionnels. Le design compact et efficace facilite la navigation et encourage l'interaction immédiate.",
+      features: [
+        "Section témoignages clients",
+        "Boutons d'appel à l'action",
+        "Espace partenaires dédié",
+        "Formulaire devis rapide",
+        "Carte interventions interactive",
+        "Chat en direct",
+      ]
+    },
+    {
+      id: "expertise",
+      image: "/images/projects/themes/couvreur3.png",
+      objective: "Une solution web complète alliant présentation professionnelle et outils de conversion. Ce thème hybride propose une expérience utilisateur enrichie avec des fonctionnalités avancées comme un configurateur de projet et un espace client personnalisé, tout en conservant une présentation claire de vos services et réalisations.",
+      features: [
+        "Portfolio interactif",
+        "Blog multimédia",
+        "Système de réservation",
+        "Analytics avancés",
+        "Module FAQ dynamique",
+        "Intégration CRM"
+      ]
+    }
+  ]
+},
+{
+ id: "restaurant",
+ label: "Restaurant & Café", 
+ description: "Solution complète pour restaurants et cafés",
+ type: "vitrine",
+ icon: Utensils,
+ subThemes: [
+   {
+     id: "burger",
+     image: "/images/projects/themes/resto4.png",
+     objective: "Un thème contemporain au design flat et épuré, idéal pour les restaurants de burgers et fast-food premium. L'interface dynamique combine animations fluides et illustrations modernes qui facilitent la navigation. Les micro-animations sur les boutons et le système de panier intuitif optimisent l'expérience de commande, tandis que la mise en page aérée met en valeur vos produits avec impact.",
+     features: [
+       "Système de commande ",
+       "Animations produits", 
+       "Menu digital",
+       "Paiement sécurisée",
+       "Services de livraison",
+       "Programme de fidélité",
+     ]
+   },
+   {
+     id: "seafood",
+     image: "/images/projects/themes/resto2.png", 
+     objective: "Une expérience web haut de gamme mariant élégance et modernité. Le design luxueux s'appuie sur une typographie raffinée et une palette sophistiquée évoquant l'univers marin. Des sliders panoramiques présentent vos espaces et créations avec fluidité, tandis que l'interface épurée et la navigation intuitive créent un parcours client premium.",
+     features: [
+       "Réservation table ",
+       "Menu dégustation ", 
+       "Carte des vins ",
+       "Virtual tour du restaurant",
+       "Blog culinaire ",
+       "Espace événements "
+     ]
+   },
+   {
+     id: "gastronomic",
+     image: "/images/projects/themes/resto1.png",
+     objective: "Un thème minimaliste et efficace pour restaurant gastronomique, concentré sur l'essentiel. L'interface simplifiée met en avant vos plats signatures et le système de réservation. La mise en page aérée et la navigation fluide guident naturellement les visiteurs vers les fonctionnalités clés tout en préservant une esthétique haut de gamme.",
+     features: [
+       "Système de réservation",
+       "Menu digital",
+       "Galerie plats signature",
+       "Interface commande",
+       "Gestion tables", 
+     ]
+   }
+ ]
+},
 
   {
     id: "immobilier",

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { IconArrow } from "../ui/icons";
 import Typography from "../ui/typography";
@@ -9,11 +10,11 @@ export default function Footer() {
         <Typography variant="title" className="">DISCUTONS<br/> ENSEMBLE DE<br/> VOS PROJETS</Typography>
         <div className="flex max-md:flex-wrap max-md:gap-4 justify-center gap-6">
           <Button>Prendre rdv <IconArrow/></Button>
-          <Button className="group" variant={'outline'}>Contact <IconArrow className="brightness-0 group-hover:brightness-[1] transition-all"/></Button>
+          <Link href='/contact'><Button className="group" variant={'outline'}>Contact <IconArrow className="brightness-0 group-hover:brightness-[1] transition-all"/></Button></Link>
         </div>
       </div>
       <div className="flex gap-24 max-md:gap-14 uppercase text-lg flex-col text-primary/60 py-20 justify-center items-center">
-        <span className="text-6xl text-primary font-bold">DIGITOILE</span>
+       <Link href='/contact'> <span className="text-6xl text-primary font-bold">DIGITOILE</span></Link>
         <div className="flex max-md:flex-wrap max-md:items-center max-md:justify-center max-md:text-center max-md:gap-10 justify-around w-full px-20">
                  <span className=" hover:text-primary">/confidentialité</span>
         <span className=" hover:text-primary">@2023 LADIGITOILE Tous droits réservés</span>
