@@ -7,34 +7,32 @@ export const postalCodeRegex = /^[0-9]{5}$/;
 
 export const contactSchema = z.object({
   firstName: z.string()
-    .min(2, "Le prénom doit contenir au moins 2 caractères")
-    .max(50, "Le prénom ne doit pas dépasser 50 caractères"),
+    .min(1, "Prénom requis")
+    .max(50, "Prénom trop long (50 caractères max)"),
   
   lastName: z.string()
-    .min(2, "Le nom doit contenir au moins 2 caractères")
-    .max(50, "Le nom ne doit pas dépasser 50 caractères"),
+    .min(1, "Nom requis")
+    .max(50, "Nom trop long (50 caractères max)"),
   
   email: z.string()
-    .email("L'adresse email n'est pas valide")
-    .min(5, "L'email est trop court")
-    .max(100, "L'email est trop long"),
+    .email("Email invalide")
+    .min(5, "Email trop court")
+    .max(100, "Email trop long"),
   
   company: z.string()
-    .max(100, "Le nom de l'entreprise ne doit pas dépasser 100 caractères")
+    .max(20, "Nom de l'entreprise trop long")
     .optional()
     .or(z.literal("")),
   
-  phone: z.string()
-    .regex(phoneRegex, "Le format du numéro de téléphone n'est pas valide (ex: 06 12 34 56 78)")
-    .optional()
-    .or(z.literal("")),
+phone: z.string()
+  .regex(phoneRegex, "Numéro invalide (ex: 06 12 34 56 78)"),
   
   city: z.string()
-    .min(2, "La ville doit contenir au moins 2 caractères")
-    .max(100, "Le nom de la ville est trop long"),
+    .min(1, "Ville requise")
+    .max(100, "Nom de la ville trop long"),
   
   zipCode: z.string()
-    .regex(postalCodeRegex, "Le code postal doit contenir exactement 5 chiffres")
+    .regex(postalCodeRegex, "Code postal invalide")
     .optional()
     .or(z.literal(""))
 });
@@ -43,11 +41,11 @@ export type ContactValidation = z.infer<typeof contactSchema>;
 
 // Messages d'erreur personnalisés
 export const errorMessages = {
-  required: "Ce champ est requis",
-  invalid: "Ce champ n'est pas valide",
-  tooShort: (field: string) => `${field} est trop court`,
-  tooLong: (field: string) => `${field} est trop long`,
-  invalidEmail: "L'adresse email n'est pas valide",
-  invalidPhone: "Le format du numéro de téléphone n'est pas valide",
-  invalidPostal: "Le code postal doit contenir exactement 5 chiffres"
+  required: "Champ requis",
+  invalid: "Valeur invalide",
+  tooShort: (field: string) => `${field} trop court`,
+  tooLong: (field: string) => `${field} trop long`,
+  invalidEmail: "Email invalide",
+  invalidPhone: "Numéro invalide",
+  invalidPostal: "Code postal invalide"
 };

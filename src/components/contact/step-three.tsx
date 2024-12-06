@@ -85,7 +85,7 @@ const FormField = ({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           className={cn(
-            "bg-transparent w-full text-lg outline-none",
+            "bg-transparent font-[500] rounded-none w-full text-lg outline-none",
             showError && error 
               ? "text-red-500" 
               : value 
@@ -100,7 +100,7 @@ const FormField = ({
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="absolute -bottom-6 left-0 flex items-center gap-1 text-sm text-red-500"
+        className="absolute -bottom-6 left-0 flex items-center gap-1 font-[600] text-sm text-red-500"
       >
         <AlertCircle className="w-4 h-4" />
         <span>{error}</span>
@@ -141,7 +141,7 @@ export default function StepThree({
             className="text-6xl max-xl:text-5xl max-xs:text-4xl uppercase leading-[1.1] text-gray font-bold"
             variants={itemVariants}
           >
-            Informations de contact
+Dernière étape<b className='text-primary'>.</b>
           </motion.h3>
           <motion.p 
             className="text-[#D5D5D5]/70 font-[500] text-xl"
@@ -205,6 +205,7 @@ export default function StepThree({
               placeholder="06 00 00 00 00"
               error={errors.phone}
               showError={showErrors}
+              required
             />
           </FormSection>
 

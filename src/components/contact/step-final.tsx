@@ -1,20 +1,42 @@
 'use client'
 
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Instagram, Twitter, Linkedin, LucideIcon } from 'lucide-react';
+
+const SocialLink = ({ 
+  icon: Icon, 
+  href, 
+  label 
+}: { 
+  icon: LucideIcon;
+  href: string;
+  label: string;
+}) => (
+  <motion.a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    whileHover={{ scale: 1.1 }}
+    whileTap={{ scale: 0.95 }}
+    className="flex items-center gap-2 text-[#D5D5D5] hover:text-[#CEF440] transition-colors"
+  >
+    <Icon className="w-5 h-5" />
+    {label}
+  </motion.a>
+);
 
 const StepFinal = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center">
-      <motion.div 
-        className="text-center space-y-8"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0, y: 50 },
-          visible: { opacity: 1, y: 0 }
-        }}
-      >
+     <div className="w-full h-full min-h-[calc(100vh-24rem)] flex flex-col items-center justify-center"> {/* Mise à jour */}
+     <motion.div 
+       className="text-center space-y-8"
+       initial="hidden"
+       animate="visible"
+       variants={{
+         hidden: { opacity: 0, y: 50 },
+         visible: { opacity: 1, y: 0 }
+       }}
+     >
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -57,6 +79,38 @@ const StepFinal = () => {
             Nous reviendrons vers vous dans les plus brefs délais.
           </motion.p>
         </div>
+
+        {/* Section réseaux sociaux */}
+        <motion.div
+          className="-12"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { 
+              opacity: 1, 
+              y: 0,
+              transition: { delay: 0.8 }
+            }
+          }}
+        >
+
+          <div className="flex justify-center gap-8 text-lg font-medium">
+            <SocialLink 
+              icon={Instagram} 
+              href="https://instagram.com/digitoile" 
+              label="Instagram"
+            />
+            <SocialLink 
+              icon={Twitter} 
+              href="https://twitter.com/digitoile" 
+              label="Twitter"
+            />
+            <SocialLink 
+              icon={Linkedin} 
+              href="https://linkedin.com/company/digitoile" 
+              label="LinkedIn"
+            />
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
