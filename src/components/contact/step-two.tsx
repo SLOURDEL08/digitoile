@@ -50,14 +50,14 @@ const ProjectQuestion = ({
             className={cn(
               "flex items-center w-full h-14 cursor-pointer transition-all duration-200",
               "bg-gray/5 border-l-2",
-              "group relative",
-              value === true ? "border-l-[#CEF440]" : "border-transparent hover:border-l-[#D5D5D5]/50"
+              "group relative overflow-hidden",
+              value === true ? "border-l-[#CEF440] bg-primary/10" : "border-transparent hover:border-l-[#D5D5D5]/50"
             )}
           >
             <div className={cn(
               "absolute inset-0 transition-all duration-200 -z-10",
               value === true 
-                ? "bg-[#CEF440]/5" 
+                ? "bg-primary bg-opacity-10"  // Corrigé ici
                 : "bg-[#151516] group-hover:bg-[#D5D5D5]/5"
             )} />
             
@@ -97,13 +97,13 @@ const ProjectQuestion = ({
               "flex items-center w-full h-14 cursor-pointer transition-all duration-200",
               "bg-gray/5 border-l-2",
               "group relative overflow-hidden",
-              value === false ? "border-l-[#CEF440]" : "border-transparent hover:border-l-[#D5D5D5]/50"
+              value === false ? "border-l-[#CEF440] bg-primary/10" : "border-transparent hover:border-l-[#D5D5D5]/50"
             )}
           >
             <div className={cn(
               "absolute inset-0 transition-all duration-200 -z-10",
               value === false 
-                ? "bg-[#CEF440]/5" 
+                ? "bg-primary bg-opacity-10"  // Corrigé ici
                 : "bg-[#151516] group-hover:bg-[#D5D5D5]/5"
             )} />
             

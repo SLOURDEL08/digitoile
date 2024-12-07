@@ -14,7 +14,8 @@ export function Hero({
         className
       )}
     >
-      <div className="p-10  max-xs:p-6 relative">
+      
+      <div className="p-10 max-w-[2000px] mx-auto  max-xs:p-6 relative">
         {children}
       </div>
     </section>

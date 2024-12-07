@@ -1,5 +1,3 @@
-// lib/validations.ts
-
 import { z } from "zod";
 
 export const phoneRegex = /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/;
@@ -24,8 +22,8 @@ export const contactSchema = z.object({
     .optional()
     .or(z.literal("")),
   
-phone: z.string()
-  .regex(phoneRegex, "Numéro invalide (ex: 06 12 34 56 78)"),
+  phone: z.string()
+    .regex(phoneRegex, "Numéro invalide (ex: 06 12 34 56 78)"),
   
   city: z.string()
     .min(1, "Ville requise")

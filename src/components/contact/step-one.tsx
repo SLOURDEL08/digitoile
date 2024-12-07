@@ -59,7 +59,7 @@ const ServiceCheckbox = ({
           "flex items-center w-full h-14 cursor-pointer transition-all duration-200",
           "bg-gray/5 border-l-2",
           "group relative overflow-hidden",
-          isChecked ? "border-l-[#CEF440]" : "border-transparent hover:border-l-[#D5D5D5]/50"
+          isChecked ? "border-l-[#CEF440] bg-primary/10" : "border-transparent hover:border-l-[#D5D5D5]/50"
         )}
       >
         <div className={cn(

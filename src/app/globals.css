@@ -134,7 +134,15 @@ input{
 .h-screened{
   height: calc(100vh - 6rem);
 }
-
+ .anim-blackpurple-bg {
+      
+ }
+ .anim-blackpurple-bg:hover {
+      background: linear-gradient(45deg, #151516, #ba6bff4a,#151516, #ba6bff4a, #151516, #ba6bff4a);
+        background-size: 500% 500%;
+    animation: Gradient 10s ease infinite;
+    background-color: #151516;
+ }
  .anim-gray-bg {
       background: linear-gradient(45deg, #D5D5D580, #D5D5D520, #D5D5D580, #D5D5D520, #D5D5D580, #D5D5D520);
         background-size: 400% 400%;

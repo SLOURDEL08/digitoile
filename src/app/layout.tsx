@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -31,6 +30,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <head>
         {fontPreloads.map(({ name }) => (
+          
           <link
             key={name}
             rel="preload"
@@ -39,36 +39,21 @@ export default function RootLayout({
             type="font/otf"
             crossOrigin="anonymous"
           />
+          
         ))}
+         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async />
       </head>
       <body 
         className={`
           font-CD-bold text-secondary font-CD-semibold font-CD-extralight 
           font-cd font-CD-medium font-CD-regular font-CD-light 
           font-light antialiased
-          bg-[#151516] text-gray
+          bg-[#151516]
         `} 
         suppressHydrationWarning
       >
         {children}
-        <Toaster
-          position="top-right"
-          expand={true}
-          richColors
-          closeButton
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: '#151516',
-              border: '1px solid rgba(213, 213, 213, 0.1)',
-              color: '#D5D5D5',
-            },
-            classNames: {
-              success: "bg-[rgba(206,244,64,0.1)] border-[rgba(206,244,64,0.2)] text-[#CEF440]",
-              error: "bg-[rgba(255,86,86,0.1)] border-[rgba(255,86,86,0.2)] text-[#FF5656]"
-            }
-          }}
-        />
       </body>
     </html>
   );

@@ -9,7 +9,10 @@ export default function Footer() {
       <div className="mx-14 max-md:p-10 max-xs:p-6 max-xs:py-8 max-xs:mx-6 max-md:mx-8 max-md:py-12 space-y-14 p-20 rounded-b-[150px] max-xs:pb-10 max-xs:space-y-6 max-xs:rounded-b-[80px] max-md:rounded-b-[100px] bg-primary text-center">
         <Typography variant="title" className="">DISCUTONS<br/> ENSEMBLE DE<br/> VOS PROJETS</Typography>
         <div className="flex max-md:flex-wrap max-md:gap-4 justify-center gap-6">
-          <Button>Prendre rdv <IconArrow/></Button>
+          <Button
+            onClick={() => window.Calendly?.initPopupWidget({url: 'https://calendly.com/digitoile/30min'})}
+
+          >Prendre rdv <IconArrow /></Button>
           <Link href='/contact'><Button className="group" variant={'outline'}>Contact <IconArrow className="brightness-0 group-hover:brightness-[1] transition-all"/></Button></Link>
         </div>
       </div>

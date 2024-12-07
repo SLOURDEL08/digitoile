@@ -1,7 +1,6 @@
-// ContactPage.tsx
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'sonner';
 import LayoutContent from '@/components/layout/content';
@@ -15,6 +14,7 @@ import StepFinal from '@/components/contact/step-final';
 import { MapPin, AtSign, PhoneCall } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { IconArrow } from '@/components/ui/icons';
+import Link from 'next/link';
 
 const ContactInfo = () => (
   <div className="space-y-12">
@@ -35,15 +35,19 @@ const ContactInfo = () => (
       </div>
     </div>
 
-    <div className='space-y-6 max-lg:hidden max-lg:flex max-lg:space-y-0 max-lg:gap-10'>
-      <Button variant="outline" className='opacity-60 border-gray hover:bg-primary group hover:text-secondary hover:border-primary text-gray'>
+    <div className='flex flex-wrap gap-4 max-lg:hidden max-lg:flex max-lg:space-y-0 max-lg:gap-10'>
+      <Button variant="outline" className='opacity-60 hover:opacity-100 border-gray hover:bg-primary group hover:text-secondary hover:border-primary text-gray'
+                  onClick={() => window.Calendly?.initPopupWidget({url: 'https://calendly.com/digitoile/30min'})}
+>
         Prendre RDV
         <IconArrow className='brightness-[9999] group-hover:brightness-0 transition-colors opacity-80'/>
       </Button>
-      <Button variant="outline" className='opacity-60 border-gray hover:bg-primary group hover:text-secondary hover:border-primary text-gray'>
+      <Link href="/projets">
+       <Button variant="outline" className='opacity-60 hover:opacity-100 border-gray hover:bg-primary group hover:text-secondary hover:border-primary text-gray'>
         Nos projets
         <IconArrow className='brightness-[9999] group-hover:brightness-0 transition-colors opacity-80'/>
-      </Button>
+      </Button></Link>
+     
     </div>
   </div>
 );
@@ -55,7 +59,85 @@ export default function ContactPage() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [showErrors, setShowErrors] = useState(false);
 
-  const handleServiceChange = (category: ServiceCategory, service: string) => {
+  const validateStepOne = useCallback(() => {
+    const totalServices = Object.values(formData.services).reduce(
+      (total, serviceArray) => total + serviceArray.length,
+      0
+    );
+    
+    if (totalServices === 0) {
+      toast.error('Veuillez sélectionner au moins un service');
+      return false;
+    }
+    return true;
+  }, [formData.services]);
+
+  const validateStepTwo = useCallback(() => {
+    const { hasWebsite, websiteUrl, hasBranding, hasSocialMedia } = formData.projectInfo;
+    
+    if (hasWebsite === null || hasBranding === null || hasSocialMedia === null) {
+      toast.error('Veuillez répondre à toutes les questions');
+      return false;
+    }
+
+    if (hasWebsite === true && (!websiteUrl || websiteUrl.trim() === '')) {
+      toast.error('Veuillez saisir l\'URL de votre site web');
+      return false;
+    }
+
+    return true;
+  }, [formData.projectInfo]);
+
+  const validateStepThree = useCallback(() => {
+    const validationResult = contactSchema.safeParse(formData.contact);
+    setShowErrors(true);
+
+    if (!validationResult.success) {
+      const errors: Record<string, string> = {};
+      validationResult.error.issues.forEach((issue) => {
+        errors[issue.path[0].toString()] = issue.message;
+      });
+      setFormErrors(errors);
+      return false;
+    }
+
+    setFormErrors({});
+    return true;
+  }, [formData.contact]);
+
+  const handleStepNavigation = useCallback((direction: 'next' | 'prev') => {
+    if (direction === 'next') {
+      let canProceed = false;
+      
+      switch (currentStep) {
+        case 1:
+          canProceed = validateStepOne();
+          break;
+        case 2:
+          canProceed = validateStepTwo();
+          break;
+        case 3:
+          if (validateStepThree()) {
+            handleSubmit();
+          }
+          return;
+        default:
+          canProceed = true;
+      }
+
+      if (canProceed) {
+        setCurrentStep(prev => prev + 1);
+        setShowErrors(false);
+        setFormErrors({});
+      }
+    } else {
+      setCurrentStep(prev => prev - 1);
+      setShowErrors(false);
+      setFormErrors({});
+    }
+  }, [currentStep, validateStepOne, validateStepTwo, validateStepThree]);
+
+  const handleServiceChange = useCallback((category: ServiceCategory, service: string) => {
     setFormData(prev => ({
       ...prev,
       services: {
@@ -65,61 +147,60 @@ export default function ContactPage() {
           : [...prev.services[category], service]
       }
     }));
-  };
+  }, []);
 
-  const handleProjectInfoChange = (field: string, value: boolean | string) => {
+  const handleProjectInfoChange = useCallback((field: string, value: boolean | string) => {
     setFormData(prev => ({
       ...prev,
-      projectInfo: { ...prev.projectInfo, [field]: value }
-    }));
-  };
-
-  const handleContactChange = (field: keyof FormData['contact'], value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      contact: { ...prev.contact, [field]: value }
-    }));
-    if (showErrors) {
-      const validationResult = contactSchema.safeParse({
-        ...formData.contact,
-        [field]: value
-      });
-      if (!validationResult.success) {
-        const error = validationResult.error.issues.find(issue => issue.path[0] === field);
-        if (error) {
-          setFormErrors(prev => ({ ...prev, [field]: error.message }));
-        } else {
-          setFormErrors(prev => {
-            const newErrors = { ...prev };
-            delete newErrors[field];
-            return newErrors;
-          });
-        }
+      projectInfo: {
+        ...prev.projectInfo,
+        [field]: value,
+        ...(field === 'hasWebsite' && value === false ? { websiteUrl: '' } : {})
       }
-    }
-  };
+    }));
+  }, []);
 
-  const handleSubmit = async () => {
-    if (isSubmitting) return;
-    
-    try {
-      const validationResult = contactSchema.safeParse(formData.contact);
+  const handleContactChange = useCallback((field: keyof FormData['contact'], value: string) => {
+    const updatedContact = {
+      ...formData.contact,
+      [field]: value
+    };
+
+    setFormData(prev => ({
+      ...prev,
+      contact: updatedContact
+    }));
+
+    if (showErrors) {
+      const validationResult = contactSchema.safeParse(updatedContact);
+      
       if (!validationResult.success) {
-        setShowErrors(true);
         const errors: Record<string, string> = {};
         validationResult.error.issues.forEach((issue) => {
           errors[issue.path[0].toString()] = issue.message;
         });
         setFormErrors(errors);
+      } else {
+        setFormErrors({});
+      }
+    }
+  }, [formData.contact, showErrors]);
+
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+    
+    try {
+      if (!validateStepOne()) {
+        setCurrentStep(1);
         return;
       }
 
-      const hasSelectedServices = Object.values(formData.services).some(
-        services => services.length > 0
-      );
-      if (!hasSelectedServices) {
-        toast.error('Veuillez sélectionner au moins un service');
-        setCurrentStep(1);
+      if (!validateStepTwo()) {
+        setCurrentStep(2);
+        return;
+      }
+
+      if (!validateStepThree()) {
         return;
       }
 
@@ -138,6 +219,7 @@ export default function ContactPage() {
       }
 
       setCurrentStep(4);
+      toast.success('Message envoyé avec succès');
 
     } catch (error) {
       console.error('Erreur:', error);
@@ -147,12 +229,34 @@ export default function ContactPage() {
     }
   };
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setFormData(defaultFormData);
     setCurrentStep(1);
     setShowErrors(false);
     setFormErrors({});
-  };
+  }, []);
+
+  const getStepValidationState = useCallback(() => {
+    switch (currentStep) {
+      case 1:
+        return Object.values(formData.services).some(
+          serviceArray => serviceArray.length > 0
+        );
+      case 2: {
+        const { hasWebsite, websiteUrl, hasBranding, hasSocialMedia } = formData.projectInfo;
+        const allQuestionsAnswered = hasWebsite !== null && hasBranding !== null && hasSocialMedia !== null;
+        const urlValid = hasWebsite === true ? Boolean(websiteUrl && websiteUrl.trim() !== '') : true;
+        return allQuestionsAnswered && urlValid;
+      }
+      case 3: {
+        // Validation complète du formulaire
+        const result = contactSchema.safeParse(formData.contact);
+        return result.success;
+      }
+      default:
+        return true;
+    }
+  }, [currentStep, formData.services, formData.projectInfo, formData.contact]);
 
   return (
     <main className="flex max-lg:flex-col min-h-screened">
@@ -198,13 +302,14 @@ export default function ContactPage() {
             </AnimatePresence>
 
             <Navigation
-  currentStep={currentStep}
-  onNext={() => setCurrentStep(p => p + 1)}
-  onPrev={() => setCurrentStep(p => p - 1)}
-  onSubmit={handleSubmit}
-  onReset={handleReset}
-  disabled={isSubmitting}
-/>
+              currentStep={currentStep}
+              onNext={() => handleStepNavigation('next')}
+              onPrev={() => handleStepNavigation('prev')}
+              onSubmit={handleSubmit}
+              onReset={handleReset}
+              disabled={isSubmitting}
+              isStepValid={getStepValidationState()}
+            />
           </div>
         </LayoutContent>
       </section>

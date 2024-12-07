@@ -87,8 +87,11 @@ export default function Home() {
   />
 </Typography>
        <div className="flex max-md:gap-6 max-lg:pt-2 gap-8 pt-4">
-          <Link href='/contact'><Button >Prendre RDV<IconArrow/></Button></Link>
-          <Link href='/contact'><Button variant="outline">CONTACT<IconArrow className="text-secondary"/></Button></Link>
+          <Button
+            onClick={() => window.Calendly?.initPopupWidget({url: 'https://calendly.com/digitoile/30min'})}
+
+          >Prendre rdv <IconArrow /></Button>
+          <Link href='/contact'><Button variant="outline">CONTACT<IconArrow className="text-secondary group-hover:text-primary"/></Button></Link>
        </div>
      </div>
 

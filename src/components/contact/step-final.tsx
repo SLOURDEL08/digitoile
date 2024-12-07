@@ -27,7 +27,7 @@ const SocialLink = ({
 
 const StepFinal = () => {
   return (
-     <div className="w-full h-full min-h-[calc(100vh-24rem)] flex flex-col items-center justify-center"> {/* Mise à jour */}
+     <div className="w-full h-full min-h-[calc(100vh-20rem)] flex flex-col items-center justify-center"> {/* Mise à jour */}
      <motion.div 
        className="text-center space-y-8"
        initial="hidden"

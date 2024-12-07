@@ -34,7 +34,7 @@ export default function LayoutContent({
   return (
     <section 
       className={cn(
-        "w-full",
+        "w-full max-w-[2000px] mx-auto",
         backgroundVariants[variant],
         className
       )}

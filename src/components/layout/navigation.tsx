@@ -81,7 +81,7 @@ export default function Navigation() {
   return (
     <>
       <header className="relative h-24 max-md:h-[5.5rem] my-auto bg-primary py-6">
-        <div className="max-w-[1800px] max-sm:px-6 mx-auto px-8">
+        <div className="max-w-[2000px] max-sm:px-6 mx-auto px-8">
           <div className="flex items-center justify-between">
             <Link href="/" className="tracking-tight  flex items-center gap-4  font-[800] text-5xl max-md:text-4xl">
               DIGITOILE

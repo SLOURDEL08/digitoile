@@ -1,6 +1,4 @@
-
-
-export type ServiceCategory = 'web' | 'design' | 'marketing';
+export type ServiceCategory = 'web' | 'design' | 'marketing' | 'autres';
 
 export interface ServiceOption {
   id: string;
