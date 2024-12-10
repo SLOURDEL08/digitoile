@@ -1,7 +1,9 @@
 'use client'
 
+import SlidingTitle from "@/components/animation/SlidingTitle";
 import LayoutContent from "@/components/layout/content";
 import ProjectGrid from "@/components/projects/project-grid";
+import ReviewAnimated from "@/components/animation/review/ReviewAnimated";
 import CTACall from "@/components/sections/cta-call";
 import ServicesSection from "@/components/sections/service-section";
 import ThemeViewer from "@/components/sections/theme-viewer/theme-viewer";
@@ -9,13 +11,28 @@ import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/ui/hero/hero";
 import { IconArrow } from "@/components/ui/icons";
 import { InfiniteScroll } from "@/components/ui/infinite-scroll/infinite-scroll";
-import Typography from "@/components/ui/typography";
 import { AtSign } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import { type Review } from "@/components/animation/review/types";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home() {
+ const reviews: Review[] = [
+    {
+      name: "John D.",
+     avatar: "/images/face1.png",
+      reviewDescription:"J'ai beaucoup aimé l'accompagnement offert lors du lancement de mon business",
+      date: "2024",
+      rating: "5"
+    },
+    {
+      name: "Jane L.",
+      avatar: "/images/face2.png",
+      reviewDescription:"J'ai beaucoup aimé l'accompagnement offert lors du lancement de mon business",
+      date: "2024",
+      rating: "4"
+    }
+  ];
   const words = [
     "DÉVELOPPEMENT WEB",
     "DESIGN UI/UX",
@@ -53,14 +70,14 @@ export default function Home() {
     <div className="relative">
       <Hero className="w-full">
  <div className="flex flex-col h-full">
-   <div className="flex gap-14 flex-1 max-lg:flex-col max-md:gap-14 max-sm:gap-10 w-full">
+   <div className="flex gap-6 flex-1 max-lg:flex-col max-md:gap-14 max-sm:gap-10 w-full">
      {/* Contenu gauche */}
      <div
        ref={leftContentRef}
-       className="w-[60%] max-lg:w-full space-y-6 max-md:space-y-4 z-10 max-md:pr-0 pr-8"
+       className="w-[60%] max-lg:w-full space-y-10 max-md:space-y-8 z-10 max-md:pr-0 pr-8"
      >
        <div
-         className="inline-flex backdrop-blur-xl font-[500] overflow-hidden items-center gap-2 anim-black-bg border border-secondary/5 hover:bg-secondary/5 group tracking-widest transition-all duration-500 bg-secondary/10 rounded-full max-md:px-1.5 max-md:p-1  p-1.5 px-2"
+         className="inline-flex -mb-4 backdrop-blur-xl font-[500] overflow-hidden items-center gap-2 anim-black-bg border border-secondary/5 hover:bg-secondary/5 group tracking-widest transition-all duration-500 bg-secondary/10 rounded-full max-md:px-1.5 max-md:p-1  p-1.5 px-2"
               >
                                   <span className="bg-secondary text-white font-[500] max-xs:text-xs max-md:text-sm text-base p-1.5 max-md:p-[5px] flex justify-center items-center leading-none rounded-full"><AtSign className="w-3.5 h-3.5" /></span>
 
@@ -68,25 +85,9 @@ export default function Home() {
            contact@digitoile.fr
          </span>
        </div>
-       <Typography variant="title" className="block ">
-  DES SOLUTIONS
-  SUR-MESURE POUR VOS PROJETS WEB
-  <Image 
-    src="/images/star.webp" 
-    width={50} 
-    height={50} 
-    alt=""
-    className="inline-block align-middle ml-4 mb-3 max-md:w-8 max-md:ml-2 max-md:mb-4 max-md:-mt-4"
-                />
-                <Image 
-    src="/images/star.webp" 
-    width={35} 
-    height={35} 
-    alt=""
-    className="inline-block  align-middle -mb-8  max-md:w-6 max-md:-mb-2 max-md:-ml-2"
-  />
-</Typography>
-       <div className="flex max-md:gap-6 max-lg:pt-2 gap-8 pt-4">
+      <SlidingTitle/>
+<ReviewAnimated reviews={reviews} />
+       <div className="flex max-md:gap-6 max-lg:pt-2 gap-8">
           <Button
             onClick={() => window.Calendly?.initPopupWidget({url: 'https://calendly.com/digitoile/30min'})}
 

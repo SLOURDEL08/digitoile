@@ -231,10 +231,10 @@ export default function CTACall() {
       <Button 
         onClick={() => window.Calendly?.initPopupWidget({url: 'https://calendly.com/digitoile/30min'})}
         variant="outline" 
-        className="max-md:group-hover/container:scale-100 max-md:group-hover/container:translate-x-1 w-max max-md:mx-0 max-md:mt-1 max-md:text-base max-md:py-2.5 max-md:px-4 max-md:border mx-auto mt-4 text-gray group-hover/container:scale-110 group-hover/container:bg-gray group-hover/container:text-secondary transition-all duration-300 border-gray"
+        className="text-gray max-md:group-hover/container:scale-100 group/b hover:!text-gray   hover:!bg-secondary hover:border-secondary max-md:group-hover/container:translate-x-1 w-max max-md:mx-0 max-md:mt-1 max-md:text-base max-md:py-2.5 max-md:px-4 max-md:border mx-auto mt-4  group-hover/container:scale-110 group-hover/container:bg-gray group-hover/container:text-secondary transition-all duration-300 border-gray"
       >
         Cliquez ici
-        <IconArrow className="text-gray transiton-all duration-300 group-hover/container:!text-secondary max-md:w-3 max-md:h-3"/>
+        <IconArrow className="text-gray group-hover/b:!text-gray transiton-all duration-300 group-hover/container:text-secondary group-hover: max-md:w-3 max-md:h-3"/>
       </Button>
     </div>
   );

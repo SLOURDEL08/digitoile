@@ -149,6 +149,11 @@ input{
     animation: Gradient 25s ease infinite;
  }
 
+   .anim-white-bg {
+      background: linear-gradient(45deg, #ffffff60, #ffffffb5, #ffffff60, #ffffffb5, #ffffff60, #ffffffb5);
+        background-size: 400% 400%;
+    animation: Gradient 25s ease infinite;
+ }
   .anim-graylight-bg {
       background: linear-gradient(45deg, #D5D5D540, #D5D5D510, #D5D5D540, #D5D5D510, #D5D5D540, #D5D5D520);
         background-size: 400% 400%;
@@ -227,14 +232,41 @@ input{
 }
 
 .smart-title {
-  font-size: clamp(3rem, 3vw + 2rem, 9rem);
+  font-size: clamp(3rem, 3vw + 2rem, 4.2rem);
   line-height: 1;
 
 }
 
 
+@keyframes change {
+  0%, 20% { 
+    transform: translate3d(0, 0, 0); 
+  }
+  25%, 45% { 
+    transform: translate3d(0, -25%, 0); 
+  }
+  50%, 70% { 
+    transform: translate3d(0, -50%, 0); 
+  }
+  75%, 95% { 
+    transform: translate3d(0, -75%, 0); 
+  }
+  100% { 
+    transform: translate3d(0, 0, 0); 
+  }
+}
 
+.animate-change {
+  animation: change 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
 
+.text-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .center-gradient{
   background: transparent;
 }
@@ -245,4 +277,35 @@ input{
 .center-gradient-collapse{
     background: linear-gradient(270deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.05) 10.08%, rgba(255, 255, 255, 0.05) 89.27%, rgba(255, 255, 255, 0.00) 100%) ;
 
+}
+
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.slide-out {
+  animation: slideOut 0.5s ease-out forwards;
 }
