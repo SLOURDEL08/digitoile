@@ -173,24 +173,14 @@ export const ThemeSelector = ({
                         onSubThemeChange(theme.subThemes[0]);
                         setIsOpen(false);
                       }}
-                      className="w-full p-4 hover:bg-gray/10 transition-colors"
+                      className="w-full p-4 px-3 hover:bg-gray/10 transition-colors"
                     >
                       <div className="flex  items-center justify-between">
                         <div>
                           <div className="flex text-gray items-center gap-2">
                             <ThemeIcon className="h-5 w-5" />
                             <h3 className="text-lg font-semibold">{theme.label}</h3>
-                            <span className={cn(
-                              "text-xs capitalize font-[600] px-2 py-1 rounded-full",
-                              {
-                                "bg-blue-500/10 text-blue-500": theme.type === "vitrine",
-                                "bg-purple-500/10 text-purple-500": theme.type === "ecommerce",
-                                "bg-green-500/10 text-green-500": theme.type === "vitrine-booking",
-                                "bg-orange-500/10 text-orange-500": theme.type === "vitrine-ecommerce",
-                              }
-                            )}>
-                              {theme.type}
-                            </span>
+                 
                           </div>
                         </div>
                         <ChevronRight className="h-5 w-5 opacity-50 text-gray flex-shrink-0" />
