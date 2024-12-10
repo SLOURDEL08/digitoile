@@ -232,7 +232,7 @@ input{
 }
 
 .smart-title {
-  font-size: clamp(3rem, 3vw + 2rem, 4.2rem);
+  font-size: clamp(3rem, 3vw + 2rem, 4rem);
   line-height: 1;
 
 }

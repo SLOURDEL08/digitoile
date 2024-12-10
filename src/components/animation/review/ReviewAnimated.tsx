@@ -30,16 +30,16 @@ const ReviewAnimated = ({ reviews }: ReviewAnimatedProps) => {
   const currentReview = reviews[currentIndex];
 
   return (
-    <div className="relative h-[75px] max-md:h-[70px] w-max max-md:w-full overflow-visible">
+    <div className="relative h-[75px] max-xs:h-[60px] max-md:h-[70px] w-max max-md:w-full overflow-visible">
       <div 
         className={`
           transition-all duration-500 ease-in-out
           ${isAnimating ? 'translate-x-[-100%] opacity-0' : 'translate-x-0 opacity-100'}
         `}
       >
-        <div className="h-[75px]  max-md:h-[70px] relative max-md:w-full w-max gap-4 max-md:gap-3 flex items-end">
+        <div className="h-[75px] max-xs:h-[60px]  max-md:min-h-[70px] relative max-md:w-full w-max gap-4 max-md:gap-3 flex items-end">
           {/* Avatar section */}
-          <div className='anim-white-bg border-2 border-white/10 backdrop-blur-sm p-3 max-md:p-2 rounded-full max-md:w-[90px] max-md:h-[70px] h-[75px] w-[75px] shadow-sm'>
+          <div className='anim-white-bg border-2 border-white/10 backdrop-blur-sm p-3 max-md:p-2 rounded-full max-md:min-w-[70px] max-xs:h-[60px] max-xs:w-[60px] max-md:min-h-[70px] h-[75px] w-[75px] shadow-sm'>
             <div className="relative w-full h-full overflow-hidden rounded-full">
               <Image 
                 src={currentReview.avatar}
@@ -56,16 +56,16 @@ const ReviewAnimated = ({ reviews }: ReviewAnimatedProps) => {
           </div>
 
           {/* Review content section */}
-          <div className='w-[360px] max-md:w-full  anim-white-bg border-2 border-white/10 backdrop-blur-sm h-full rounded-full max-md:p-2 max-md:px-5 p-4 px-6 relative'>
-            <div className='flex  max-md:flex-col justify-between items-center h-full'>
-              <div className='flex-1 pr-4'>
-                <p className='text-[14px] max-md:text-xs text-truncate max-md:leading-[15px] max-md:pt-0.5 leading-[17px] text-secondary font-semibold line-clamp-2'>
+          <div className='w-[360px] max-md:w-full max-md:max-w-96  anim-white-bg border-2 border-white/10 backdrop-blur-sm h-full rounded-full max-md:p-2 max-md:px-5 p-4 px-6 relative'>
+            <div className='flex  max-md:flex gap-0 max-md:gap-3 justify-between items-center h-full'>
+              <div className='w-max max-md:w-full'>
+                <p className='text-[14px]  max-md:text-xs text-truncate max-md:leading-[15px] max-md:pt-0.5 leading-[17px] text-secondary font-semibold line-clamp-2'>
                   {currentReview.reviewDescription}
                 </p>
               </div>
 
-              <div className='flex max-md:flex-row max-md:justify-end w-full flex-col items-end gap-1.5'>
-                <div className='flex max-md:absolute max-md:top-2.5 max-md:right-6 gap-0.5'>
+              <div className='flex max-md:w-max max-md:flex-col max-md:justify-end w-full flex-col items-end gap-1.5'>
+                <div className='flex gap-0.5'>
                   {[...Array(5)].map((_, index) => (
                     <Star 
                       key={index}
@@ -77,7 +77,7 @@ const ReviewAnimated = ({ reviews }: ReviewAnimatedProps) => {
                     />
                   ))}
                 </div>
-                <p className='text-[10px] max-md:hidden italic font-bold leading-4 text-secondary/70'>
+                <p className='text-[10px] italic font-bold leading-4 text-secondary/70'>
                   {currentReview.date}
                 </p>
               </div>
