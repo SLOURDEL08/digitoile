@@ -157,28 +157,26 @@ useEffect(() => {
   window.addEventListener('resize', checkMobile);
 
   // Modifié pour utiliser les options rootMargin et threshold
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      // Vérifie si l'élément est visible ET proche du centre
-      const ratio = entry.intersectionRatio;
-      const boundingRect = entry.boundingClientRect;
-      const windowHeight = window.innerHeight;
-      
-      // Calcule si l'élément est approximativement au centre de l'écran
-      const elementCenter = boundingRect.top + boundingRect.height / 2;
-      const windowCenter = windowHeight / 2;
-      const distanceFromCenter = Math.abs(elementCenter - windowCenter);
-      
-      // Considère l'élément comme "centré" s'il est dans une zone de ±30% de la hauteur de la fenêtre
-      const centerThreshold = windowHeight * 0.3;
-      
-      setIsVisible(entry.isIntersecting && distanceFromCenter < centerThreshold);
-    },
-    { 
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-      rootMargin: '-30% 0px -30% 0px' // Crée une "zone centrale" de 40% de la hauteur de la fenêtre
-    }
-  );
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    // Vérifie si l'élément est visible ET proche du centre
+    const boundingRect = entry.boundingClientRect;
+    const windowHeight = window.innerHeight;
+    
+    // Calcule si l'élément est approximativement au centre de l'écran
+    const elementCenter = boundingRect.top + boundingRect.height / 2;
+    const windowCenter = windowHeight / 2;
+    const distanceFromCenter = Math.abs(elementCenter - windowCenter);
+    
+    const centerThreshold = windowHeight * 0.3;
+    
+    setIsVisible(entry.isIntersecting && distanceFromCenter < centerThreshold);
+  },
+  { 
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    rootMargin: '-30% 0px -30% 0px'
+  }
+);
 
   if (sectionRef.current) {
     observer.observe(sectionRef.current);
